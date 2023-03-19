@@ -2,14 +2,15 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-} from "react-router-dom"
-import RestaurantLayout from "../layout/RestaurantLayout"
-import Login from "../pages/auth/login/Login"
-import Register from "../pages/auth/register/Register"
-import Donations from "../pages/restaurant/donations/Donations"
-import Items from "../pages/restaurant/items/Items"
-import SingleItem from "../pages/restaurant/item[id]/SingleItem"
-import Order from "../pages/restaurant/orders/Order"
+} from "react-router-dom";
+import RestaurantLayout from "../layout/RestaurantLayout";
+import Login from "../pages/auth/login/Login";
+import Register from "../pages/auth/register/Register";
+import DonateNow from "../pages/Donate/DonateNow";
+import Donations from "../pages/restaurant/donations/Donations";
+import Items from "../pages/restaurant/items/Items";
+import SingleItem from "../pages/restaurant/item[id]/SingleItem";
+import Order from "../pages/restaurant/orders/Order";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,6 +33,14 @@ export const router = createBrowserRouter(
             </>
           }
         />
+        <Route
+          path="/donate"
+          element={
+            <>
+              <DonateNow />
+            </>
+          }
+        />
       </Route>
 
       <Route path="/restaurant" element={<RestaurantLayout />}>
@@ -42,4 +51,4 @@ export const router = createBrowserRouter(
       </Route>
     </Route>
   )
-)
+);
