@@ -8,6 +8,7 @@ import {
   FormLabel,
   Input,
 } from "@chakra-ui/react";
+import "./Register.css";
 
 export default function Register() {
   return (
@@ -22,24 +23,43 @@ export default function Register() {
     >
       <VStack spacing={4} align="flex-start" w="full">
         <VStack spacing={1} align={["flex-start", "center"]} w="full" mb="3">
-          <Heading>SignUp</Heading>
+          <Heading className="Heading_create_acc">Create a new account</Heading>
         </VStack>
 
         <FormControl>
-          <FormLabel mt="10px">First Name</FormLabel>
-          <Input rounded="none" varient="filled" />
+          <FormLabel mt="20px">First Name</FormLabel>
+          <Input bgColor="lightgray" rounded="none" varient="filled" />
 
-          <FormLabel mt="10px">Last Name</FormLabel>
-          <Input rounded="none" varient="filled" />
+          <FormLabel mt="20px">Last Name</FormLabel>
+          <Input bgColor="lightgray" rounded="none" varient="filled" />
 
-          <FormLabel mt="10px">E-mail Address</FormLabel>
-          <Input rounded="none" varient="filled" />
+          <FormLabel mt="20px">Phone</FormLabel>
+          <Input
+            bgColor="lightgray"
+            rounded="none"
+            type="number"
+            varient="filled"
+          />
 
-          <FormLabel mt="10px">Password</FormLabel>
-          <Input rounded="none" varient="filled" type="password" />
+          <FormLabel mt="20px">E-mail Address</FormLabel>
+          <Input
+            bgColor="lightgray"
+            rounded="none"
+            type="email"
+            varient="filled"
+          />
+
+          <FormLabel mt="20px">Password</FormLabel>
+          <Input
+            bgColor="lightgray"
+            rounded="none"
+            varient="filled"
+            type="password"
+          />
         </FormControl>
       </VStack>
       <Button
+        className="signup_btn"
         mt="20px"
         bgColor="#2176FF"
         rounded="none"
@@ -47,7 +67,7 @@ export default function Register() {
         w={["full", "full"]}
         alignSelf="end"
       >
-        SignUp
+        Create account
       </Button>
       <Center>
         <HStack>

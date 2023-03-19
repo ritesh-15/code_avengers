@@ -23,20 +23,30 @@ export default function Login() {
     >
       <VStack spacing={4} align="flex-start" w="full">
         <VStack spacing={1} align={["flex-start", "center"]} w="full" mb="3">
-          <Heading>Login</Heading>
+          <Heading className="Heading_welcome_back">Welcome Back 👋</Heading>
         </VStack>
 
         <FormControl>
           <FormLabel mt="20px">E-mail Address</FormLabel>
-          <Input rounded="none" varient="filled" />
+          <Input
+            bgColor="lightgray"
+            className="input"
+            varient="filled"
+            type="email"
+          />
 
-          <FormLabel>Password</FormLabel>
-          <Input rounded="none" varient="filled" type="password" />
+          <FormLabel mt="20px">Password</FormLabel>
+          <Input
+            bgColor="lightgray"
+            className="input"
+            varient="filled"
+            type="password"
+          />
         </FormControl>
       </VStack>
       <Button
+        className="login_btn"
         bgColor="#2176FF"
-        rounded="none"
         color="white"
         w={["full", "full"]}
         mt="20px"
@@ -51,7 +61,7 @@ export default function Login() {
       </Center>
       <Center>
         <HStack mt="20px">
-          <Text>Don't have a account? </Text>
+          <Text>Don't have an account? </Text>
           <Link to="/register" className="register_link">
             Register
           </Link>

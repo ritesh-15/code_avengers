@@ -11,10 +11,10 @@ button:hover {
 .register_link:hover {
   color: #0c53c5;
 }
-.Heading_welcome_back {
+.Heading_create_acc {
   color: #0c53c5;
 }
-.login_btn {
+.signup_btn {
   border: 1px solid #2176ff;
   border-radius: 12px !important;
 }
