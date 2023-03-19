@@ -1,14 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Box, Text, Heading, VStack, HStack, Center } from "@chakra-ui/layout";
+import React from "react"
+import { Link } from "react-router-dom"
+import { Box, Text, Heading, VStack, HStack, Center } from "@chakra-ui/layout"
 import {
   Button,
   Checkbox,
   FormControl,
   FormLabel,
   Input,
-} from "@chakra-ui/react";
-import "./Login.css";
+} from "@chakra-ui/react"
+import "./Login.css"
 
 export default function Login() {
   return (
@@ -28,10 +28,10 @@ export default function Login() {
 
         <FormControl>
           <FormLabel mt="20px">E-mail Address</FormLabel>
-          <Input rounded="none" varient="filled" />
+          <Input mb="1em" rounded="none" varient="filled" />
 
           <FormLabel>Password</FormLabel>
-          <Input rounded="none" varient="filled" type="password" />
+          <Input mb="1em" rounded="none" varient="filled" type="password" />
         </FormControl>
       </VStack>
       <Button
@@ -58,5 +58,5 @@ export default function Login() {
         </HStack>
       </Center>
     </Box>
-  );
+  )
 }
