@@ -28,10 +28,10 @@ export default function Login() {
 
         <FormControl>
           <FormLabel mt="20px">E-mail Address</FormLabel>
-          <Input rounded="none" varient="filled" />
+          <Input mb="1em" rounded="none" varient="filled" />
 
           <FormLabel>Password</FormLabel>
-          <Input rounded="none" varient="filled" type="password" />
+          <Input mb="1em" rounded="none" varient="filled" type="password" />
         </FormControl>
       </VStack>
       <Button

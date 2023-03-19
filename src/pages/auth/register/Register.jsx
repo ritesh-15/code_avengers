@@ -1,13 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Box, Text, Heading, VStack, HStack, Center } from "@chakra-ui/layout";
-import {
-  Button,
-  Checkbox,
-  FormControl,
-  FormLabel,
-  Input,
-} from "@chakra-ui/react";
+import React from "react"
+import { Link } from "react-router-dom"
+import { Box, Text, Heading, VStack, HStack, Center } from "@chakra-ui/layout"
+import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react"
 
 export default function Register() {
   return (
@@ -27,16 +21,16 @@ export default function Register() {
 
         <FormControl>
           <FormLabel mt="10px">First Name</FormLabel>
-          <Input rounded="none" varient="filled" />
+          <Input mb="1em" rounded="none" varient="filled" />
 
           <FormLabel mt="10px">Last Name</FormLabel>
-          <Input rounded="none" varient="filled" />
+          <Input mb="1em" rounded="none" varient="filled" />
 
           <FormLabel mt="10px">E-mail Address</FormLabel>
-          <Input rounded="none" varient="filled" />
+          <Input mb="1em" rounded="none" varient="filled" />
 
           <FormLabel mt="10px">Password</FormLabel>
-          <Input rounded="none" varient="filled" type="password" />
+          <Input mb="1em" rounded="none" varient="filled" type="password" />
         </FormControl>
       </VStack>
       <Button
@@ -63,5 +57,5 @@ export default function Register() {
         </HStack>
       </Center>
     </Box>
-  );
+  )
 }

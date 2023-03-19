@@ -18,6 +18,7 @@ export const router = createBrowserRouter(
             </>
           }
         />
+
         <Route
           path="/register"
           element={
