@@ -9,7 +9,7 @@ import Register from "../pages/auth/register/Register"
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/">
-      <Route path="/" index>
+      <Route path="/" >
         <Route
           path="/login"
           element={
