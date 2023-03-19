@@ -2,14 +2,16 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-} from "react-router-dom"
-import Login from "../pages/auth/login/Login"
-import Register from "../pages/auth/register/Register"
+} from "react-router-dom";
+import Login from "../pages/auth/login/Login";
+import Register from "../pages/auth/register/Register";
+import Home from "../Components/Home";
+import Donate from "../pages/donate/Donate";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/">
-      <Route path="/" index>
+      <Route path="/" element={<Home />}>
         <Route
           path="/login"
           element={
@@ -18,6 +20,7 @@ export const router = createBrowserRouter(
             </>
           }
         />
+
         <Route
           path="/register"
           element={
@@ -27,6 +30,14 @@ export const router = createBrowserRouter(
           }
         />
       </Route>
+      <Route
+        path="/donate"
+        element={
+          <>
+            <Donate />
+          </>
+        }
+      />
     </Route>
   )
-)
+);
