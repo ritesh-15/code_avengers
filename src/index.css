@@ -1,0 +1,21 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.min_h_screen {
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.flex {
+  display: flex;
+}
+
+.w_full {
+  width: 100%;
+}

@@ -1,0 +1,47 @@
+.sidebar {
+  flex: 1;
+  max-width: 300px;
+  padding: 1em;
+  width: 100%;
+  min-width: 300px;
+}
+
+.sidebar__heading {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.sidebar__list li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding: 0.75em 0.75em;
+  border-radius: 0.5em;
+  margin: 1em 0;
+  cursor: pointer;
+  transition: all 150ms ease-in;
+  font-size: 1.5rem;
+}
+
+.sidebar__list li > span {
+  font-size: inherit;
+}
+
+.sidebar__list li.active {
+  background-color: #2176ff;
+  color: white;
+}
+
+.sidebar__list li:hover {
+  background: rgba(0, 0, 0, 0.075);
+}
+
+.sidebar__list li.active:hover {
+  background-color: #2176ff;
+  color: white;
+}
+
+.sidebara__list__icon {
+  font-size: 2rem;
+}
