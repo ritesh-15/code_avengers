@@ -5,6 +5,7 @@ import {
 } from "react-router-dom"
 import DashboardLayout from "../layouts/DashboardLayout"
 import Dashboard from "../pages/admin/dashboard/Dashboard"
+import Event from "../pages/admin/event/Event"
 import Login from "../pages/auth/login/Login"
 import Register from "../pages/auth/register/Register"
 
@@ -17,6 +18,7 @@ export const router = createBrowserRouter(
       </Route>
       <Route element={<DashboardLayout />} path="/admin">
         <Route path="" index element={<Dashboard />} />
+        <Route path="event" element={<Event />} />
       </Route>
     </Route>
   )

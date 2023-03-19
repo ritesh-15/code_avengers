@@ -11,10 +11,11 @@
   font-weight: 600;
 }
 
-.sidebar__list li {
+.sidebar__list a {
   list-style: none;
   display: flex;
   align-items: center;
+  width: 100%;
   gap: 1em;
   padding: 0.75em 0.75em;
   border-radius: 0.5em;
@@ -24,20 +25,24 @@
   font-size: 1.5rem;
 }
 
-.sidebar__list li > span {
+.sidebar__list li {
+  list-style: none;
+}
+
+.sidebar__list li > a > span {
   font-size: inherit;
 }
 
-.sidebar__list li.active {
+.sidebar__list a.active {
   background-color: #2176ff;
   color: white;
 }
 
-.sidebar__list li:hover {
+.sidebar__list a:hover {
   background: rgba(0, 0, 0, 0.075);
 }
 
-.sidebar__list li.active:hover {
+.sidebar__list a.active:hover {
   background-color: #2176ff;
   color: white;
 }
