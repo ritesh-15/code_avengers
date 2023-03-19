@@ -35,15 +35,6 @@ const NavFooter = () => {
           <Text fontSize={13}>Profile</Text>
         </VStack>
       </Box>
-
-      {/* 
-      <HStack spacing={7} ml={5} mt={2} position={"fixed"} bottom={0}>
-        
-        
-          
-        
-      </HStack>
-       */}
     </Flex>
   );
 };
