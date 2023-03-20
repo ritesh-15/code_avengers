@@ -1,7 +1,66 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { useToast } from "@chakra-ui/toast"
+import { useFormik } from "formik"
+import React from "react"
+import { useMutation } from "react-query"
+import { Link } from "react-router-dom"
+import FormControl from "../../../components/form_control/FormControl"
+import { register } from "../../../services/auth.service"
+import { RegisterSchema } from "../../../validation/auth_validation"
+import { useDispatch } from "react-redux"
+import { setUser } from "../../../app/slices/userSlice"
 
 export default function Register() {
+  const toast = useToast()
+  const dispatch = useDispatch()
+
+  const { handleChange, handleSubmit, values, errors } = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+      name: "",
+    },
+    validationSchema: RegisterSchema,
+    onSubmit: (values) =>
+      registerMutation.mutate({
+        ...values,
+        username: values.name,
+      }),
+  })
+
+  const registerMutation = useMutation(register, {
+    onSuccess: (value) => {
+      // store the jwt token
+      localStorage.setItem("jwt_token", value.data.jwt)
+
+      // store the current logged in user
+      dispatch(setUser(value.data.user))
+
+      const { isOrganization, isRestaurant } = value.data.user
+
+      toast({
+        title: "Account created.",
+        description: "We've created your account for you.",
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+      })
+
+      if (isOrganization) return navigate("/orgniztion")
+      if (isRestaurant) return navigate("/restaurant")
+
+      navigate("/")
+    },
+    onError: (e) => {
+      toast({
+        title: "Something went wrong!",
+        description: e.response.data.error.message,
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+      })
+    },
+  })
+
   return (
     <section className="flex justify-center w-[95%] mx-auto items-center min-h-screen">
       <div className="w-full md:max-w-[550px]">
@@ -10,36 +69,31 @@ export default function Register() {
           <p className="text-sm">Let's get started by signing up</p>
         </div>
 
-        <form className="flex flex-col gap-4" action="">
-          <div className="flex flex-col">
-            <label className="text-sm" htmlFor="">
-              Name
-            </label>
-            <input
-              type="text"
-              className="bg-gray-100 outline-none mt-2 w-full px-2 py-3 rounded-md"
-            />
-          </div>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4" action="">
+          <FormControl
+            onChange={handleChange}
+            label="Name"
+            error={errors.name}
+            value={values.name}
+            name="name"
+          />
 
-          <div className="flex flex-col">
-            <label className="text-sm" htmlFor="">
-              Email address
-            </label>
-            <input
-              type="text"
-              className="bg-gray-100 outline-none mt-2 w-full px-2 py-3 rounded-md"
-            />
-          </div>
+          <FormControl
+            onChange={handleChange}
+            label="Email address"
+            error={errors.email}
+            value={values.email}
+            name="email"
+          />
 
-          <div className="flex flex-col">
-            <label className="text-sm" htmlFor="">
-              Password
-            </label>
-            <input
-              type="password"
-              className="bg-gray-100 outline-none mt-2 w-full px-2 py-3 rounded-md"
-            />
-          </div>
+          <FormControl
+            onChange={handleChange}
+            label="Password"
+            error={errors.password}
+            value={values.password}
+            type="password"
+            name="password"
+          />
 
           <button className="bg-primary  text-white px-2 py-3 rounded-md">
             Sign Up
@@ -74,5 +128,5 @@ export default function Register() {
         </div>
       </div>
     </section>
-  );
+  )
 }
