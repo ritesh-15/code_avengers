@@ -2,35 +2,68 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-} from "react-router-dom";
-import Login from "../pages/auth/login/Login";
-import Register from "../pages/auth/register/Register";
-import Event from "../event/Event";
-import HomeRestaurant from "../pages/Home/HomeRestaurant";
-import RestaurantLayout from "../layout/RestaurantLayout";
-import Donations from "../pages/restaurant/donations/Donations";
-import Items from "../pages/restaurant/items/Items";
-import SingleItem from "../pages/restaurant/item[id]/SingleItem";
-import Order from "../pages/restaurant/orders/Order";
-import OrganizationLayout from "../layout/OrganizationLayout";
-import Organization from "../components/organization/Organization";
-import OrgnizationDonations from "../pages/organization/donations/OrgnizationDonations";
-
-import DonateNow from "../pages/Donate/DonateNow";
-import RestaurantHome from "../pages/view_restaurants/RestaurantHome";
+} from "react-router-dom"
+import OrganizationLayout from "../layout/OrganizationLayout"
+import RestaurantLayout from "../layout/RestaurantLayout"
+import Login from "../pages/auth/login/Login"
+import Register from "../pages/auth/register/Register"
+import OrgnizationDonations from "../pages/organization/donations/OrgnizationDonations"
+import Donations from "../pages/restaurant/donations/Donations"
+import Items from "../pages/restaurant/items/Items"
+import SingleItem from "../pages/restaurant/item[id]/SingleItem"
+import Order from "../pages/restaurant/orders/Order"
+import DonateNow from "../pages/Donate/DonateNow"
+import JoinOrg from "../pages/joinOrganization/JoinOrg"
+import JoinRes from "../pages/joinRestaurant/JoinRes"
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/">
-      <Route path="/" element={<HomeRestaurant />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/restaurantHome" element={<RestaurantHome />} />
-      <Route
-        path="/event"
-        element={<Event title="Event" location="Pune, Maharashtra" />}
-      />
-      <Route path="/donate" element={<DonateNow />} />
+      <Route path="/">
+        <Route
+          path="/login"
+          element={
+            <>
+              <Login />
+            </>
+          }
+        />
+
+        <Route
+          path="/register"
+          element={
+            <>
+              <Register />
+            </>
+          }
+        />
+        <Route
+          path="/donate"
+          element={
+            <>
+              <DonateNow />
+            </>
+          }
+        />
+         <Route
+          path="/join_org"
+          element={
+            <>
+              <JoinOrg />
+            </>
+          }
+        />
+
+        <Route
+          path="/join_res"
+          element={
+            <>
+              <JoinRes />
+            </>
+          }
+        />
+
+      </Route>
 
       <Route path="/restaurant" element={<RestaurantLayout />}>
         <Route path="" index element={<Items />} />
