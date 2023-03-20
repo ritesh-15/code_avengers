@@ -1,7 +1,5 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { Box, Text, Heading, VStack, HStack, Center } from "@chakra-ui/layout"
-import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react"
 
 export default function Register() {
   return (
