@@ -2,48 +2,33 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-} from "react-router-dom"
+} from "react-router-dom";
+import Login from "../pages/auth/login/Login";
+import Register from "../pages/auth/register/Register";
+import Event from "../event/Event";
+import HomeRestaurant from "../pages/Home/HomeRestaurant";
+import RestaurantLayout from "../layout/RestaurantLayout";
+import Donations from "../pages/restaurant/donations/Donations";
+import Items from "../pages/restaurant/items/Items";
+import SingleItem from "../pages/restaurant/item[id]/SingleItem";
+import Order from "../pages/restaurant/orders/Order";
 import OrganizationLayout from "../layout/OrganizationLayout"
-import RestaurantLayout from "../layout/RestaurantLayout"
-import Login from "../pages/auth/login/Login"
-import Register from "../pages/auth/register/Register"
+import Organization from "../components/organization/Organization";
 import OrgnizationDonations from "../pages/organization/donations/OrgnizationDonations"
-import Donations from "../pages/restaurant/donations/Donations"
-import Items from "../pages/restaurant/items/Items"
-import SingleItem from "../pages/restaurant/item[id]/SingleItem"
-import Order from "../pages/restaurant/orders/Order"
+
 import DonateNow from "../pages/Donate/DonateNow"
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/">
-      <Route path="/">
-        <Route
-          path="/login"
-          element={
-            <>
-              <Login />
-            </>
-          }
-        />
-
-        <Route
-          path="/register"
-          element={
-            <>
-              <Register />
-            </>
-          }
-        />
-        <Route
-          path="/donate"
-          element={
-            <>
-              <DonateNow />
-            </>
-          }
-        />
-      </Route>
+      <Route path="/" element={<HomeRestaurant />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route
+        path="/event"
+        element={<Event title="Event" location="Pune, Maharashtra" />}
+      />
+      <Route path="/donate" element={<DonateNow />} />
 
       <Route path="/restaurant" element={<RestaurantLayout />}>
         <Route path="" index element={<Items />} />
@@ -52,9 +37,10 @@ export const router = createBrowserRouter(
         <Route path="orders" index element={<Order />} />
       </Route>
 
-      <Route path="/organization" element={<OrganizationLayout />}>
-        <Route path="donations" index element={<OrgnizationDonations />} />
+        <Route path="organizationlayout" element={<OrganizationLayout />} />
+        <Route path="organizationdonation" element={<OrgnizationDonations />} />
+      <Route path="organization" element={<Organization />}>
       </Route>
     </Route>
   )
-)
+);
