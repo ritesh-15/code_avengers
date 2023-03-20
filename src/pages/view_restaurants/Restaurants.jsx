@@ -1,4 +1,5 @@
 import React from "react";
+// import axios from "axios";
 import {
   Box,
   Card,
@@ -10,23 +11,25 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { AiFillStar } from "react-icons/ai";
-const Restaurants = () => {
+import { GrLocation } from "react-icons/gr";
+
+const Restaurants = ({ props }) => {
+  console.log("from props", props.name);
   return (
     <Box px={5} py={3}>
       <Center>
         <Card>
-          <Img
+          {/* <Img
             borderRadius={10}
             objectFit="cover"
             maxW={{ base: "100%", sm: "300px" }}
-            src="https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60"
+            src={pro     ps.image}
             alt="Caffe Latte"
             w="100vw"
-          />
+          /> */}
           <HStack m={4}>
-            <Text fontWeight={"bold"}>The Tittle of Restaurant</Text>
+            <Text fontWeight={"bold"}>{props.name}</Text>
             <Spacer />
-
             <Badge colorScheme="green">
               <HStack>
                 <Text>3.4</Text>
@@ -36,9 +39,12 @@ const Restaurants = () => {
           </HStack>
 
           <HStack mx={3} mb={3}>
-            <Text fontSize={15}>pizza, Italian</Text>
+            <Text fontSize={15}>{props.description}</Text>
             <Spacer />
-            <Text fontSize={15}>Rs 150 for one</Text>
+            <HStack>
+              <GrLocation />
+              <p className="text-sm">{props.location}</p>
+            </HStack>
           </HStack>
         </Card>
       </Center>

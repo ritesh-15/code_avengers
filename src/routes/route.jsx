@@ -21,7 +21,7 @@ import OrganizationOwner from "./OrganizationOwner";
 import RestaurantHome from "../pages/view_restaurants/RestaurantHome";
 import Restaurants from "../pages/view_restaurants/Restaurants";
 import RestaurantsPage from "../pages/view_restaurants/RestaurantsPage";
-
+import ProductSummary from "../pages/cart/ProductSummary";
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/">
@@ -30,7 +30,7 @@ export const router = createBrowserRouter(
         element={
           <>
             <Protected>
-              <HomeRestaurant />
+              <ProductSummary />
             </Protected>
           </>
         }
@@ -49,6 +49,16 @@ export const router = createBrowserRouter(
 
       <Route
         path="/register"
+        element={
+          <>
+            <Protected isAuthRoute>
+              <Register />
+            </Protected>
+          </>
+        }
+      />
+      <Route
+        path="/cart"
         element={
           <>
             <Protected isAuthRoute>
