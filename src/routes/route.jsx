@@ -20,6 +20,8 @@ import DonateNow from "../pages/Donate/DonateNow";
 import RestaurantOwner from "./RestaurantOwner";
 import OrganizationOwner from "./OrganizationOwner";
 import RestaurantHome from "../pages/view_restaurants/RestaurantHome";
+import Restaurants from "../pages/view_restaurants/Restaurants";
+import RestaurantsPage from "../pages/view_restaurants/RestaurantsPage";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -29,7 +31,7 @@ export const router = createBrowserRouter(
         element={
           <>
             <Protected>
-              <HomeRestaurant />
+              <RestaurantsPage />
             </Protected>
           </>
         }
@@ -71,7 +73,7 @@ export const router = createBrowserRouter(
         path="/restaurantHome"
         element={
           <>
-            <Protected>
+            <Protected isAuthRoute>
               <RestaurantHome />
             </Protected>
           </>
