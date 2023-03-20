@@ -14,12 +14,12 @@ import Order from "../pages/restaurant/orders/Order"
 import OrganizationLayout from "../layout/OrganizationLayout"
 import Protected from "./Protected"
 import OrgnizationDonations from "../pages/organization/donations/OrgnizationDonations"
-
 import DonateNow from "../pages/Donate/DonateNow"
 import RestaurantOwner from "./RestaurantOwner"
 import OrganizationOwner from "./OrganizationOwner"
 import JoinOrganization from "../pages/joinOrganization/JoinOrg"
 import JoinRestaurant from "../pages/joinRestaurant/JoinRes"
+import RestaurantHome from "../pages/view_restaurants/RestaurantHome"
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -52,6 +52,17 @@ export const router = createBrowserRouter(
           <>
             <Protected isAuthRoute>
               <Register />
+            </Protected>
+          </>
+        }
+      />
+
+      <Route
+        path="/restauranthome/:id"
+        element={
+          <>
+            <Protected>
+              <RestaurantHome />
             </Protected>
           </>
         }
