@@ -2,7 +2,7 @@ import React from "react";
 import {
   Box,
   Image,
-  Text,
+  Circle,
   Stack,
   HStack,
   Heading,
@@ -11,7 +11,7 @@ import {
   Badge,
   Spacer,
 } from "@chakra-ui/react";
-
+import { BiCartAdd } from "react-icons/bi";
 const RestaurantProduct = () => {
   return (
     <Card
@@ -35,25 +35,10 @@ const RestaurantProduct = () => {
           </p>
         </Box>
         <HStack padding={2}>
-          <Button
-            borderRadius={"80%"}
-            fontWeight="light"
-            w="25px"
-            h="35px"
-            fontSize={25}
-          >
-            +
-          </Button>
-          <Text mx={5}>0</Text>
-          <Button
-            borderRadius={"80%"}
-            fontWeight="light"
-            w="25px"
-            h="35px"
-            fontSize={25}
-          >
-            -
-          </Button>
+          <Circle>
+            <BiCartAdd size={25} />
+          </Circle>
+
           <Spacer />
           <Badge
             colorScheme="green"

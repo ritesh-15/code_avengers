@@ -60,7 +60,7 @@ const RestaurantHome = () => {
         </Stack>
       </Box>
       <Center my="2">
-        <Button>continue purchase</Button>
+        <button o>continue purchase</button>
       </Center>
     </>
   );
