@@ -8,11 +8,11 @@ import {
   TableContainer,
 } from "@chakra-ui/react"
 
-export default function Order() {
+export default function OrgnizationDonations() {
   return (
     <section className="overflow-y-auto w-[95%] mx-auto py-4">
       <div className="flex items-center justify-between pb-4 border-b">
-        <h1 className="text-xl">Orders</h1>
+        <h1 className="text-xl">Donations</h1>
       </div>
 
       <div className="mt-4">
@@ -20,9 +20,8 @@ export default function Order() {
           <Table variant="simple">
             <Thead>
               <Tr>
-                <Th>Order ID</Th>
-                <Th>Customer Name</Th>
-                <Th isNumeric>Amount</Th>
+                <Th>Donation Id</Th>
+                <Th>Name of donor</Th>
                 <Th>Date</Th>
               </Tr>
             </Thead>
@@ -30,37 +29,21 @@ export default function Order() {
               <Tr>
                 <Td>ff4g7g82vr657gg</Td>
                 <Td>Ritesh Khore</Td>
-                <Td isNumeric>500</Td>
                 <Td>24 March 2023</Td>
               </Tr>
               <Tr>
                 <Td>ff4g7g82vr657gg</Td>
                 <Td>Ritesh Khore</Td>
-                <Td isNumeric>500</Td>
                 <Td>24 March 2023</Td>
               </Tr>
               <Tr>
                 <Td>ff4g7g82vr657gg</Td>
                 <Td>Ritesh Khore</Td>
-                <Td isNumeric>500</Td>
                 <Td>24 March 2023</Td>
               </Tr>
               <Tr>
                 <Td>ff4g7g82vr657gg</Td>
                 <Td>Ritesh Khore</Td>
-                <Td isNumeric>500</Td>
-                <Td>24 March 2023</Td>
-              </Tr>
-              <Tr>
-                <Td>ff4g7g82vr657gg</Td>
-                <Td>Ritesh Khore</Td>
-                <Td isNumeric>500</Td>
-                <Td>24 March 2023</Td>
-              </Tr>
-              <Tr>
-                <Td>ff4g7g82vr657gg</Td>
-                <Td>Ritesh Khore</Td>
-                <Td isNumeric>500</Td>
                 <Td>24 March 2023</Td>
               </Tr>
             </Tbody>
