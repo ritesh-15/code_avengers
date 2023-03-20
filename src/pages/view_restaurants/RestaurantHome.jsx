@@ -13,7 +13,12 @@ import {
 } from "@chakra-ui/react";
 import { GrLocation } from "react-icons/gr";
 import { AiOutlineLeft } from "react-icons/ai";
-
+const mouseOver = (e) => {
+  e.target.style.background = "gray";
+};
+const mouseOut = (e) => {
+  e.target.style.background = "";
+};
 const RestaurantHome = () => {
   return (
     <>
@@ -60,7 +65,9 @@ const RestaurantHome = () => {
         </Stack>
       </Box>
       <Center my="2">
-        <button>continue purchase</button>
+        <button onMouseOver={mouseOver} onMouseOut={mouseOut}>
+          continue purchase
+        </button>
       </Center>
     </>
   );
