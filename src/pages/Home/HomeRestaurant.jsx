@@ -1,18 +1,27 @@
-import React from 'react'
-import { HStack, Spacer, Text } from '@chakra-ui/layout'
-import {
-  Menu,
-  MenuButton,
-  Box,
-  Image,
-  MenuItem
-} from "@chakra-ui/react";
-import { HamburgerIcon } from '@chakra-ui/icons';
-import NavFooter from '../../Components/NavFooter';
-import Header from '../../Components/Header';
-
+import React, { useState, useEffect } from "react";
+import { HStack, Spacer, Text } from "@chakra-ui/layout";
+import { Box, Image } from "@chakra-ui/react";
+import NavFooter from "../../Components/NavFooter";
+import Header from "../../Components/Header";
+import axios from "axios";
+import api from "../../api/axios";
+import { element } from "prop-types";
+import Hotel from "./Hotel";
+import { Link } from "react-router-dom";
 
 const homeRestaurant = () => {
+  const [rests, setRests] = useState([]);
+  const url =
+    "https://codeavengersserver-production.up.railway.app/api/restaurants";
+  const fetchData = async () => {
+    const res = await api.get(url);
+    setRests(res.data.data);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div>
       <Header />
@@ -23,23 +32,27 @@ const homeRestaurant = () => {
         Transforming leftovers into meals
       </Text>
 
-      <Image src="src\assets\home3.avif" alt="img" p={5} />
+      <Text p={5}>Famous Restaurants near you</Text>
 
-      <Box bg="#605858" m={5} p={4} color="white" borderRadius={25}>
-        <Text fontWeight={"bold"}>Donate to NGO</Text>
-        <Text>One act of kindness at a time</Text>
-      </Box>
-
-      <Image src="src\assets\home4.avif" alt="img" p={5} />
-
-      <Box bg="#605858" m={5} p={4} color="white" borderRadius={25} mb={20}>
-        <Text fontWeight={"bold"}>Fertilize</Text>
-        <Text>Growing better food, naturally</Text>
-      </Box>
+      <div>
+        {rests.map((element) => {
+          return (
+            <Link to={`/restauranthome/${element.id}`}>
+              <Hotel
+                key={element.id}
+                title={element.attributes.name}
+                description={element.attributes.description}
+                image={element.attributes.images[0].Image}
+                location={element.attributes.location}
+              />
+            </Link>
+          );
+        })}
+      </div>
 
       <NavFooter />
     </div>
   );
-}
+};
 
-export default homeRestaurant
+export default homeRestaurant;

@@ -2,23 +2,23 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-} from "react-router-dom"
-import Login from "../pages/auth/login/Login"
-import Register from "../pages/auth/register/Register"
-import Event from "../event/Event"
-import HomeRestaurant from "../pages/Home/HomeRestaurant"
-import RestaurantLayout from "../layout/RestaurantLayout"
-import Donations from "../pages/restaurant/donations/Donations"
-import Items from "../pages/restaurant/items/Items"
-import SingleItem from "../pages/restaurant/item[id]/SingleItem"
-import Order from "../pages/restaurant/orders/Order"
-import OrganizationLayout from "../layout/OrganizationLayout"
-import Protected from "./Protected"
-import OrgnizationDonations from "../pages/organization/donations/OrgnizationDonations"
-
-import DonateNow from "../pages/Donate/DonateNow"
-import RestaurantOwner from "./RestaurantOwner"
-import OrganizationOwner from "./OrganizationOwner"
+} from "react-router-dom";
+import Login from "../pages/auth/login/Login";
+import Register from "../pages/auth/register/Register";
+import Event from "../event/Event";
+import HomeRestaurant from "../pages/Home/HomeRestaurant";
+import RestaurantLayout from "../layout/RestaurantLayout";
+import Donations from "../pages/restaurant/donations/Donations";
+import Items from "../pages/restaurant/items/Items";
+import SingleItem from "../pages/restaurant/item[id]/SingleItem";
+import Order from "../pages/restaurant/orders/Order";
+import OrganizationLayout from "../layout/OrganizationLayout";
+import Protected from "./Protected";
+import OrgnizationDonations from "../pages/organization/donations/OrgnizationDonations";
+import RestaurantHome from "../pages/view_restaurants/RestaurantHome";
+import DonateNow from "../pages/Donate/DonateNow";
+import RestaurantOwner from "./RestaurantOwner";
+import OrganizationOwner from "./OrganizationOwner";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -51,6 +51,17 @@ export const router = createBrowserRouter(
           <>
             <Protected isAuthRoute>
               <Register />
+            </Protected>
+          </>
+        }
+      />
+
+      <Route
+        path="/restauranthome/:id"
+        element={
+          <>
+            <Protected isAuthRoute>
+              <RestaurantHome />
             </Protected>
           </>
         }
@@ -97,4 +108,4 @@ export const router = createBrowserRouter(
       </Route>
     </Route>
   )
-)
+);
