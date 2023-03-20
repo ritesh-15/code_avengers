@@ -15,6 +15,8 @@ import Order from "../pages/restaurant/orders/Order";
 import DonateNow from "../pages/Donate/DonateNow";
 import UserProfile from "../pages/auth/Profile/UserProfile";
 import EditProfile from "../pages/auth/Profile/EditProfile";
+import PaymentHistory from "../pages/history/PaymentHistory";
+import DonationHistory from "../pages/history/DonationHistory";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -58,6 +60,22 @@ export const router = createBrowserRouter(
           element={
             <>
               <EditProfile />
+            </>
+          }
+        />
+        <Route
+          path="/payment_history"
+          element={
+            <>
+              <PaymentHistory />
+            </>
+          }
+        />
+        <Route
+          path="/donation_history"
+          element={
+            <>
+              <DonationHistory />
             </>
           }
         />

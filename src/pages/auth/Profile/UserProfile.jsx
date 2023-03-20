@@ -49,28 +49,36 @@ function UserProfile() {
       <div className="dashboard">
         <p color="gray">Dashboard</p>
         <div className="dashboard_details_info">
-          <div className="payment_history_div">
-            <div className="payment_icon_div">
-              <MdOutlinePayment className="payment_icon" />
+          <Link to="/payment_history">
+            <div className="payment_history_div">
+              <div className="payment_icon_div">
+                <MdOutlinePayment className="payment_icon" />
+              </div>
+              <div className="payment_history">
+                <Link to="/payment_history"> Payment History</Link>
+              </div>
+              <div className="payment_history_forward_icon">
+                <Link to="/payment_history">
+                  <MdArrowForwardIos />
+                </Link>
+              </div>
             </div>
-            <div className="payment_history">
-              <Link to=""> Payment History</Link>
+          </Link>
+          <Link to="/donation_history">
+            <div className="donation_history_div">
+              <div className="donation_icon_div">
+                <BiDonateBlood className="donation_icon" />
+              </div>
+              <div className="donation_history">
+                <Link to="/donation_history"> Donation History</Link>
+              </div>
+              <div className="donation_history_forward_icon">
+                <Link to="/donation_history">
+                  <MdArrowForwardIos />
+                </Link>
+              </div>
             </div>
-            <div className="payment_history_forward_icon">
-              <MdArrowForwardIos />
-            </div>
-          </div>
-          <div className="donation_history_div">
-            <div className="donation_icon_div">
-              <BiDonateBlood className="donation_icon" />
-            </div>
-            <div className="donation_history">
-              <Link to=""> Donation History</Link>
-            </div>
-            <div className="donation_history_forward_icon">
-              <MdArrowForwardIos />
-            </div>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

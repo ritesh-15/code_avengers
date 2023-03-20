@@ -135,6 +135,14 @@
   height: auto;
   width: 100%;
 }
+.payment_history_div:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: 250ms;
+}
+.donation_history_div:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: 450ms;
+}
 .payment_icon_div {
   border-radius: 50%;
   background-color: green;
