@@ -72,9 +72,9 @@ export const router = createBrowserRouter(
         <Route path="orders" index element={<Order />} />
       </Route>
 
-      <Route path="/organization" element={<OrganizationLayout />}>
-        <Route path="donations" index element={<OrgnizationDonations />} />
-      </Route>
+      <Route path="organizationlayout" element={<OrganizationLayout />} />
+      <Route path="organizationdonation" element={<OrgnizationDonations />} />
+      <Route path="organization" element={<Organization />}></Route>
     </Route>
   )
-)
+);
