@@ -2,15 +2,16 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-} from "react-router-dom";
-import RestaurantLayout from "../layout/RestaurantLayout";
-import Login from "../pages/auth/login/Login";
-import Register from "../pages/auth/register/Register";
-import DonateNow from "../pages/Donate/DonateNow";
-import Donations from "../pages/restaurant/donations/Donations";
-import Items from "../pages/restaurant/items/Items";
-import SingleItem from "../pages/restaurant/item[id]/SingleItem";
-import Order from "../pages/restaurant/orders/Order";
+} from "react-router-dom"
+import OrganizationLayout from "../layout/OrganizationLayout"
+import RestaurantLayout from "../layout/RestaurantLayout"
+import Login from "../pages/auth/login/Login"
+import Register from "../pages/auth/register/Register"
+import OrgnizationDonations from "../pages/organization/donations/OrgnizationDonations"
+import Donations from "../pages/restaurant/donations/Donations"
+import Items from "../pages/restaurant/items/Items"
+import SingleItem from "../pages/restaurant/item[id]/SingleItem"
+import Order from "../pages/restaurant/orders/Order"
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -49,6 +50,10 @@ export const router = createBrowserRouter(
         <Route path="donations" index element={<Donations />} />
         <Route path="orders" index element={<Order />} />
       </Route>
+
+      <Route path="/organization" element={<OrganizationLayout />}>
+        <Route path="donations" index element={<OrgnizationDonations />} />
+      </Route>
     </Route>
   )
-);
+)
