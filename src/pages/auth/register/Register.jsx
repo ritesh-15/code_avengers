@@ -1,7 +1,13 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import { Box, Text, Heading, VStack, HStack, Center } from "@chakra-ui/layout"
-import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react"
+import React from "react";
+import { Link } from "react-router-dom";
+import { Box, Text, Heading, VStack, HStack, Center } from "@chakra-ui/layout";
+import {
+  Button,
+  Checkbox,
+  FormControl,
+  FormLabel,
+  Input,
+} from "@chakra-ui/react";
 
 export default function Register() {
   return (
@@ -16,24 +22,25 @@ export default function Register() {
     >
       <VStack spacing={4} align="flex-start" w="full">
         <VStack spacing={1} align={["flex-start", "center"]} w="full" mb="3">
-          <Heading>SignUp</Heading>
+          <Heading className="Heading_create_acc">Create a new account</Heading>
         </VStack>
 
         <FormControl>
           <FormLabel mt="10px">First Name</FormLabel>
-          <Input mb="1em" rounded="none" varient="filled" />
+          <Input rounded="none" varient="filled" />
 
           <FormLabel mt="10px">Last Name</FormLabel>
-          <Input mb="1em" rounded="none" varient="filled" />
+          <Input rounded="none" varient="filled" />
 
           <FormLabel mt="10px">E-mail Address</FormLabel>
-          <Input mb="1em" rounded="none" varient="filled" />
+          <Input rounded="none" varient="filled" />
 
           <FormLabel mt="10px">Password</FormLabel>
-          <Input mb="1em" rounded="none" varient="filled" type="password" />
+          <Input rounded="none" varient="filled" type="password" />
         </FormControl>
       </VStack>
       <Button
+        className="signup_btn"
         mt="20px"
         bgColor="#2176FF"
         rounded="none"
@@ -41,7 +48,7 @@ export default function Register() {
         w={["full", "full"]}
         alignSelf="end"
       >
-        SignUp
+        Create account
       </Button>
       <Center>
         <HStack>
@@ -57,5 +64,5 @@ export default function Register() {
         </HStack>
       </Center>
     </Box>
-  )
+  );
 }
