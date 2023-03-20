@@ -1,1 +1,2 @@
-export const API_URL = "https://code-avengers.onrender.com/api";
+export const API_URL =
+  "https://codeavengersserver-production.up.railway.app/api";

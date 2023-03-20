@@ -12,10 +12,12 @@ const RestaurantsPage = () => {
         </Circle>
         <Text fontSize={18}>Restaurants</Text>
       </HStack>
-      <Restaurants />
-      <Restaurants />
-      <Restaurants />
-      <Restaurants />
+      <div className="flex flex-wrap">
+        <Restaurants />
+        <Restaurants />
+        <Restaurants />
+        <Restaurants />
+      </div>
     </div>
   );
 };

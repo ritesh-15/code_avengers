@@ -5,7 +5,6 @@ import {
 } from "react-router-dom";
 import Login from "../pages/auth/login/Login";
 import Register from "../pages/auth/register/Register";
-import Event from "../event/Event";
 import HomeRestaurant from "../pages/Home/HomeRestaurant";
 import RestaurantLayout from "../layout/RestaurantLayout";
 import Donations from "../pages/restaurant/donations/Donations";
@@ -31,7 +30,7 @@ export const router = createBrowserRouter(
         element={
           <>
             <Protected>
-              <RestaurantsPage />
+              <HomeRestaurant />
             </Protected>
           </>
         }
