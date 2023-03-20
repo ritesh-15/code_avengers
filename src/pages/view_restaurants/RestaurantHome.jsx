@@ -1,5 +1,4 @@
-import { React, useState, useEffect } from "react";
-import RestaurantProduct from "./RestaurantProduct";
+import { React, useState, useEffect } from "react"
 import {
   Box,
   Image,
@@ -10,11 +9,12 @@ import {
   Circle,
   Button,
   Center,
-} from "@chakra-ui/react";
-import { GrLocation } from "react-icons/gr";
-import { AiOutlineLeft } from "react-icons/ai";
-import api from "../../api/axios";
-import Hotel from "../Home/Hotel";
+} from "@chakra-ui/react"
+import { GrLocation } from "react-icons/gr"
+import { AiOutlineLeft } from "react-icons/ai"
+import api from "../../api/axios"
+import Hotel from "../Home/Hotel"
+import RestaurantProduct from "../../components/restaurant_product/RestaurantProduct"
 
 const RestaurantHome = (props) => {
   const currHotel = {
@@ -22,21 +22,21 @@ const RestaurantHome = (props) => {
     description: "",
     image: "",
     location: "",
-  };
-  const no = 1;
-  const [restaurant, setRestaurant] = useState(null);
-  const [products, setProducts] = useState([]);
+  }
+  const no = 1
+  const [restaurant, setRestaurant] = useState(null)
+  const [products, setProducts] = useState([])
 
   const url = `https://codeavengersserver-production.up.railway.app/api/restaurants/${no}?populate[0]=products
-`;
+`
   const fetchData = async () => {
-    const res = await api.get(url);
-    setRestaurant(res.data.data);
-  };
+    const res = await api.get(url)
+    setRestaurant(res.data.data)
+  }
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
   return (
     <>
@@ -74,7 +74,6 @@ const RestaurantHome = (props) => {
           <Image
             src={restaurant?.attributes.images[0].Image}
             alt="Green double couch with wooden legs"
-           
           />
           <p className="text-md">{restaurant?.attributes.description}</p>
           <HStack>
@@ -94,7 +93,7 @@ const RestaurantHome = (props) => {
               discount,
               image,
               type,
-            } = attributes;
+            } = attributes
             return (
               <RestaurantProduct
                 key={index}
@@ -106,7 +105,7 @@ const RestaurantHome = (props) => {
                 discount={discount}
                 type={type}
               />
-            );
+            )
           })}
         </Stack>
       </Box>
@@ -117,8 +116,8 @@ const RestaurantHome = (props) => {
   )
 }
 
-export default RestaurantHome;
+export default RestaurantHome
 
 RestaurantHome.defaultProps = {
   id: 1,
-};
+}
