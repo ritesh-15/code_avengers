@@ -34,6 +34,14 @@ export const router = createBrowserRouter(
             </>
           }
         />
+        <Route
+          path="/donate"
+          element={
+            <>
+              <DonateNow />
+            </>
+          }
+        />
       </Route>
 
       <Route path="/restaurant" element={<RestaurantLayout />}>
