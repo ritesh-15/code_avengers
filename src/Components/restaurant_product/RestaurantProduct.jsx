@@ -11,8 +11,18 @@ import {
   Badge,
   Spacer,
 } from "@chakra-ui/react";
+          import { BiCartAdd } from "react-icons/bi";
 
-const RestaurantProduct = () => {
+
+const RestaurantProduct = ({
+  title,
+  description,
+  qunatity,
+  price,
+  image,
+  discount,
+  type,
+}) => {
   return (
     <Card
       direction={{ base: "column", sm: "row" }}
@@ -22,38 +32,18 @@ const RestaurantProduct = () => {
       <Image
         objectFit="cover"
         maxW={{ base: "100%", sm: "200px" }}
-        src="https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60"
+        src={image}
         alt="Caffe Latte"
+        height="250px"
       />
 
       <Stack>
         <Box px={4} py={2}>
-          <Heading size="md">The perfect latte</Heading>
-          <p className="text-xs">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi,
-            unde?
-          </p>
+          <Heading size="md">{title}</Heading>
+          <p className="text-md mt-2 inline-block">{description}</p>
         </Box>
         <HStack padding={2}>
-          <Button
-            borderRadius={"80%"}
-            fontWeight="light"
-            w="25px"
-            h="35px"
-            fontSize={25}
-          >
-            +
-          </Button>
-          <Text mx={5}>0</Text>
-          <Button
-            borderRadius={"80%"}
-            fontWeight="light"
-            w="25px"
-            h="35px"
-            fontSize={25}
-          >
-            -
-          </Button>
+          <BiCartAdd size={25} />
           <Spacer />
           <Badge
             colorScheme="green"
@@ -61,7 +51,7 @@ const RestaurantProduct = () => {
             justifySelf="flex-end"
             ml={20}
           >
-            Veg
+            {type}
           </Badge>
         </HStack>
       </Stack>
