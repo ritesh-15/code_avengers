@@ -63,38 +63,6 @@ export const router = createBrowserRouter(
             </>
           }
         />
-        <Route
-          path="/userprofile"
-          element={
-            <>
-              <UserProfile />
-            </>
-          }
-        />
-        <Route
-          path="/edit_profile"
-          element={
-            <>
-              <EditProfile />
-            </>
-          }
-        />
-        <Route
-          path="/payment_history"
-          element={
-            <>
-              <PaymentHistory />
-            </>
-          }
-        />
-        <Route
-          path="/donation_history"
-          element={
-            <>
-              <DonationHistory />
-            </>
-          }
-        />
       </Route>
 
       <Route
