@@ -1,16 +1,10 @@
-import React from 'react'
-import { HStack, Spacer, Text } from '@chakra-ui/layout'
-import {
-  Menu,
-  MenuButton,
-  Box,
-  Image,
-  MenuItem
-} from "@chakra-ui/react";
-import { HamburgerIcon } from '@chakra-ui/icons';
-import NavFooter from '../../Components/NavFooter';
-import Header from '../../Components/Header';
-
+import React from "react";
+import { HStack, Spacer, Text } from "@chakra-ui/layout";
+import { Menu, MenuButton, Box, Image, MenuItem } from "@chakra-ui/react";
+import { HamburgerIcon } from "@chakra-ui/icons";
+import NavFooter from "../../Components/NavFooter";
+import Header from "../../Components/Header";
+import { useDispatch, useSelector } from "react-redux";
 
 const homeRestaurant = () => {
   return (
@@ -40,6 +34,6 @@ const homeRestaurant = () => {
       <NavFooter />
     </div>
   );
-}
+};
 
-export default homeRestaurant
+export default homeRestaurant;

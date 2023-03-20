@@ -3,20 +3,22 @@ import {
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
-import OrganizationLayout from "../layout/OrganizationLayout";
-import RestaurantLayout from "../layout/RestaurantLayout";
 import Login from "../pages/auth/login/Login";
 import Register from "../pages/auth/register/Register";
-import OrgnizationDonations from "../pages/organization/donations/OrgnizationDonations";
+import HomeRestaurant from "../pages/Home/HomeRestaurant";
+import RestaurantLayout from "../layout/RestaurantLayout";
 import Donations from "../pages/restaurant/donations/Donations";
 import Items from "../pages/restaurant/items/Items";
 import SingleItem from "../pages/restaurant/item[id]/SingleItem";
 import Order from "../pages/restaurant/orders/Order";
+import OrganizationLayout from "../layout/OrganizationLayout";
+import Protected from "./Protected";
+import OrgnizationDonations from "../pages/organization/donations/OrgnizationDonations";
+
 import DonateNow from "../pages/Donate/DonateNow";
+import RestaurantOwner from "./RestaurantOwner";
+import OrganizationOwner from "./OrganizationOwner";
 import UserProfile from "../pages/auth/Profile/UserProfile";
-import EditProfile from "../pages/auth/Profile/EditProfile";
-import PaymentHistory from "../pages/history/PaymentHistory";
-import DonationHistory from "../pages/history/DonationHistory";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -44,6 +46,16 @@ export const router = createBrowserRouter(
       />
 
       <Route
+        path="/userProfile"
+        element={
+          <>
+            <Protected>
+              <UserProfile />
+            </Protected>
+          </>
+        }
+      />
+      <Route
         path="/register"
         element={
           <>
@@ -60,10 +72,10 @@ export const router = createBrowserRouter(
           <>
             <Protected>
               <DonateNow />
-            </>
-          }
-        />
-      </Route>
+            </Protected>
+          </>
+        }
+      />
 
       <Route
         path="/restaurant"

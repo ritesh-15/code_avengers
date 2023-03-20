@@ -1,5 +1,5 @@
 import { Container, Heading, Text, Button } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./userProfile.css";
 import { BiEditAlt } from "react-icons/bi";
@@ -7,8 +7,11 @@ import { IoIosArrowBack } from "react-icons/io";
 import { MdOutlinePayment } from "react-icons/md";
 import { MdArrowForwardIos } from "react-icons/md";
 import { BiDonateBlood } from "react-icons/bi";
+import { useSelector } from "react-redux";
 
 function UserProfile() {
+  const user = useSelector((state) => state.user);
+
   return (
     <div className="container">
       <div className="arrow_heading_div">
@@ -31,7 +34,7 @@ function UserProfile() {
         <div className="user_info">
           <div className="name_div">
             <div>
-              <h3 className="user_name">Omkar Balaso Jarad</h3>
+              <h3 className="user_name">{user.user.username}</h3>
             </div>
             <div>
               <button className="edit_details_btn">
@@ -42,7 +45,7 @@ function UserProfile() {
             </div>
           </div>
           <div className="email_div">
-            <p className="user_email">omkarjarad2002@gmail.com</p>
+            <p className="user_email">{user.user.email}</p>
           </div>
         </div>
       </div>
