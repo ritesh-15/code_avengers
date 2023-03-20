@@ -1,7 +1,7 @@
 import { Container, Heading, Text, Button } from "@chakra-ui/react";
 import React from "react";
 import { Link } from "react-router-dom";
-import "./UserProfile.css";
+import "./userProfile.css";
 import { BiEditAlt } from "react-icons/bi";
 import { IoIosArrowBack } from "react-icons/io";
 import { MdOutlinePayment } from "react-icons/md";

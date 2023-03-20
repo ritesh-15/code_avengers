@@ -15,25 +15,32 @@
   display: flex;
   width: 100%;
   height: auto;
+  margin-bottom: 20px;
 }
 .back_arrow_div {
   width: 10%;
   height: auto;
 }
-.user_details_img_info {
+.user_details_img_info_edit {
   height: 150px;
   width: 100%;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
-.user_img_div {
+.user_img_div_edit {
   height: auto;
   width: auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
-.user_img_div img {
+.user_img_div_edit img {
+  margin: auto;
+  padding: auto;
   height: 100px;
   width: 100px;
+  border-radius: 50%;
 }
 button:hover {
   background-color: #0c53c5 !important;

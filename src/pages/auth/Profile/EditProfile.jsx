@@ -2,8 +2,8 @@ import { Container, Heading, Text, Button } from "@chakra-ui/react";
 import React from "react";
 import { Link } from "react-router-dom";
 import "./editProfile.css";
-import { BiEditAlt } from "react-icons/bi";
 import { IoIosArrowBack } from "react-icons/io";
+
 function EditProfile() {
   return (
     <div className="container">
@@ -20,8 +20,8 @@ function EditProfile() {
         </div>
       </div>
 
-      <div className="user_details_img_info">
-        <div className="user_img_div">
+      <div className="user_details_img_info_edit">
+        <div className="user_img_div_edit">
           <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80" />
         </div>
       </div>
