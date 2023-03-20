@@ -1,7 +1,7 @@
 import api from "../api/axios"
 
 export const login = (data) => {
-  return api.post("/auth/local", data)
+  return api.post("/auth/local?populate=*", data)
 }
 
 export const register = (data) => {
