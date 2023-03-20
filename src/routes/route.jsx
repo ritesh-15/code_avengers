@@ -5,7 +5,6 @@ import {
 } from "react-router-dom"
 import Login from "../pages/auth/login/Login"
 import Register from "../pages/auth/register/Register"
-import Event from "../event/Event"
 import HomeRestaurant from "../pages/Home/HomeRestaurant"
 import RestaurantLayout from "../layout/RestaurantLayout"
 import Donations from "../pages/restaurant/donations/Donations"
@@ -19,6 +18,8 @@ import OrgnizationDonations from "../pages/organization/donations/OrgnizationDon
 import DonateNow from "../pages/Donate/DonateNow"
 import RestaurantOwner from "./RestaurantOwner"
 import OrganizationOwner from "./OrganizationOwner"
+import JoinOrganization from "../pages/joinOrganization/JoinOrg"
+import JoinRestaurant from "../pages/joinRestaurant/JoinRes"
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -62,6 +63,28 @@ export const router = createBrowserRouter(
           <>
             <Protected>
               <DonateNow />
+            </Protected>
+          </>
+        }
+      />
+
+      <Route
+        path="/join-as-organization"
+        element={
+          <>
+            <Protected isAuthRoute>
+              <JoinOrganization />
+            </Protected>
+          </>
+        }
+      />
+
+      <Route
+        path="/join-as-restaurant"
+        element={
+          <>
+            <Protected isAuthRoute>
+              <JoinRestaurant />
             </Protected>
           </>
         }
