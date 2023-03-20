@@ -5,6 +5,18 @@ import NavFooter from "../../Components/NavFooter"
 import Header from "../../Components/Header"
 
 const homeRestaurant = () => {
+  const [rests, setRests] = useState([]);
+  const url =
+    "https://codeavengersserver-production.up.railway.app/api/restaurants";
+  const fetchData = async () => {
+    const res = await api.get(url);
+    setRests(res.data.data);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div>
       <Header />
@@ -15,19 +27,23 @@ const homeRestaurant = () => {
         Transforming leftovers into meals
       </Text>
 
-      <Image src="src\assets\home3.avif" alt="img" p={5} />
+      <Text p={5}>Famous Restaurants near you</Text>
 
-      <Box bg="#605858" m={5} p={4} color="white" borderRadius={25}>
-        <Text fontWeight={"bold"}>Donate to NGO</Text>
-        <Text>One act of kindness at a time</Text>
-      </Box>
-
-      <Image src="src\assets\home4.avif" alt="img" p={5} />
-
-      <Box bg="#605858" m={5} p={4} color="white" borderRadius={25} mb={20}>
-        <Text fontWeight={"bold"}>Fertilize</Text>
-        <Text>Growing better food, naturally</Text>
-      </Box>
+      <div>
+        {rests.map((element) => {
+          return (
+            <Link to={`/restauranthome/${element.id}`}>
+              <Hotel
+                key={element.id}
+                title={element.attributes.name}
+                description={element.attributes.description}
+                image={element.attributes.images[0].Image}
+                location={element.attributes.location}
+              />
+            </Link>
+          );
+        })}
+      </div>
 
       <NavFooter />
     </div>
