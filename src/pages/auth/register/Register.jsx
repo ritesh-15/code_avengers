@@ -12,7 +12,7 @@ export default function Register() {
       mx="auto"
       border={["none", "10px"]}
       borderColor={["", "grey"]}
-      borederRadius={10}
+      borderRadius={10}
     >
       <VStack spacing={4} align="flex-start" w="full">
         <VStack spacing={1} align={["flex-start", "center"]} w="full" mb="3">

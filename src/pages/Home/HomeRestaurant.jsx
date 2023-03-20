@@ -17,17 +17,22 @@ const homeRestaurant = () => {
     <div>
       <Header />
 
-      <Image src="src\assets\bg.jpg" alt="img" p={5} />
+      <Image src="src\assets\home2.avif" alt="img" p={5} />
 
       <Text align={"center"} fontStyle={"italic"}>
         Transforming leftovers into meals
       </Text>
+
+      <Image src="src\assets\home3.avif" alt="img" p={5} />
+
       <Box bg="#605858" m={5} p={4} color="white" borderRadius={25}>
         <Text fontWeight={"bold"}>Donate to NGO</Text>
         <Text>One act of kindness at a time</Text>
       </Box>
 
-      <Box bg="#605858" m={5} p={4} color="white" borderRadius={25}>
+      <Image src="src\assets\home4.avif" alt="img" p={5} />
+
+      <Box bg="#605858" m={5} p={4} color="white" borderRadius={25} mb={20}>
         <Text fontWeight={"bold"}>Fertilize</Text>
         <Text>Growing better food, naturally</Text>
       </Box>
