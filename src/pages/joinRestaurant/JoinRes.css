@@ -1,0 +1,21 @@
+button:hover {
+    background-color: #0c53c5 !important;
+    transition: 350ms;
+  }
+  
+  .register_link {
+    color: #000000;
+    text-decoration: underline;
+    color: #2176ff;
+  }
+  .register_link:hover {
+    color: #0c53c5;
+  }
+  .Heading_create_acc {
+    color: #0c53c5;
+  }
+  .sumbit_btn {
+    border: 1px solid #2176ff;
+    border-radius: 12px !important;
+  }
+  

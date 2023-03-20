@@ -13,6 +13,8 @@ import Items from "../pages/restaurant/items/Items"
 import SingleItem from "../pages/restaurant/item[id]/SingleItem"
 import Order from "../pages/restaurant/orders/Order"
 import DonateNow from "../pages/Donate/DonateNow"
+import JoinOrg from "../pages/joinOrganization/JoinOrg"
+import JoinRes from "../pages/joinRestaurant/JoinRes"
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -43,6 +45,24 @@ export const router = createBrowserRouter(
             </>
           }
         />
+         <Route
+          path="/join_org"
+          element={
+            <>
+              <JoinOrg />
+            </>
+          }
+        />
+
+        <Route
+          path="/join_res"
+          element={
+            <>
+              <JoinRes />
+            </>
+          }
+        />
+
       </Route>
 
       <Route path="/restaurant" element={<RestaurantLayout />}>
