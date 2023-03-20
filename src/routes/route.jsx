@@ -2,18 +2,18 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-} from "react-router-dom";
-import Login from "../pages/auth/login/Login";
-import Register from "../pages/auth/register/Register";
-import HomeRestaurant from "../pages/Home/HomeRestaurant";
-import RestaurantLayout from "../layout/RestaurantLayout";
-import Donations from "../pages/restaurant/donations/Donations";
-import Items from "../pages/restaurant/items/Items";
-import SingleItem from "../pages/restaurant/item[id]/SingleItem";
-import Order from "../pages/restaurant/orders/Order";
-import OrganizationLayout from "../layout/OrganizationLayout";
-import Protected from "./Protected";
-import OrgnizationDonations from "../pages/organization/donations/OrgnizationDonations";
+} from "react-router-dom"
+import Login from "../pages/auth/login/Login"
+import Register from "../pages/auth/register/Register"
+import HomeRestaurant from "../pages/Home/HomeRestaurant"
+import RestaurantLayout from "../layout/RestaurantLayout"
+import Donations from "../pages/restaurant/donations/Donations"
+import Items from "../pages/restaurant/items/Items"
+import SingleItem from "../pages/restaurant/item[id]/SingleItem"
+import Order from "../pages/restaurant/orders/Order"
+import OrganizationLayout from "../layout/OrganizationLayout"
+import Protected from "./Protected"
+import OrgnizationDonations from "../pages/organization/donations/OrgnizationDonations"
 
 import DonateNow from "../pages/Donate/DonateNow";
 import RestaurantOwner from "./RestaurantOwner";
@@ -21,7 +21,9 @@ import OrganizationOwner from "./OrganizationOwner";
 import RestaurantHome from "../pages/view_restaurants/RestaurantHome";
 import Restaurants from "../pages/view_restaurants/Restaurants";
 import RestaurantsPage from "../pages/view_restaurants/RestaurantsPage";
-import ProductSummary from "../pages/cart/ProductSummary";
+import ProductSummary from "../pages/cart/ProductSummary";import JoinOrganization from "../pages/joinOrganization/JoinOrg"
+import JoinRestaurant from "../pages/joinRestaurant/JoinRes"
+
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/">
@@ -57,12 +59,13 @@ export const router = createBrowserRouter(
           </>
         }
       />
+
       <Route
-        path="/cart"
+        path="/restauranthome/:id"
         element={
           <>
             <Protected isAuthRoute>
-              <Register />
+              <RestaurantHome />
             </Protected>
           </>
         }
@@ -78,12 +81,24 @@ export const router = createBrowserRouter(
           </>
         }
       />
+
       <Route
-        path="/restaurantHome"
+        path="/join-as-organization"
         element={
           <>
             <Protected isAuthRoute>
-              <RestaurantHome />
+              <JoinOrganization />
+            </Protected>
+          </>
+        }
+      />
+
+      <Route
+        path="/join-as-restaurant"
+        element={
+          <>
+            <Protected isAuthRoute>
+              <JoinRestaurant />
             </Protected>
           </>
         }
