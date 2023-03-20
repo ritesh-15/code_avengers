@@ -15,6 +15,7 @@ import Order from "../pages/restaurant/orders/Order"
 import DonateNow from "../pages/Donate/DonateNow"
 import JoinOrg from "../pages/joinOrganization/JoinOrg"
 import JoinRes from "../pages/joinRestaurant/JoinRes"
+import DonationHistory from "../pages/DonationHist/DonationHistory"
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -63,6 +64,15 @@ export const router = createBrowserRouter(
           }
         />
 
+        <Route
+          path="donation_history"
+          element={
+          <>
+            <DonationHistory />
+          </>
+          }
+        />
+
       </Route>
 
       <Route path="/restaurant" element={<RestaurantLayout />}>
@@ -74,7 +84,7 @@ export const router = createBrowserRouter(
 
       <Route path="organizationlayout" element={<OrganizationLayout />} />
       <Route path="organizationdonation" element={<OrgnizationDonations />} />
-      <Route path="organization" element={<Organization />}></Route>
+      {/* <Route path="organization" element={<Organization />}></Route> */}
     </Route>
   )
 );
