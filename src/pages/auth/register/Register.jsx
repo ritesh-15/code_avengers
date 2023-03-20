@@ -1,68 +1,78 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Box, Text, Heading, VStack, HStack, Center } from "@chakra-ui/layout";
-import {
-  Button,
-  Checkbox,
-  FormControl,
-  FormLabel,
-  Input,
-} from "@chakra-ui/react";
+import React from "react"
+import { Link } from "react-router-dom"
 
 export default function Register() {
   return (
-    <Box
-      w={["full", "md"]}
-      p={[8, 10]}
-      mt={[10, "10vh"]}
-      mx="auto"
-      border={["none", "10px"]}
-      borderColor={["", "grey"]}
-      borederRadius={10}
-    >
-      <VStack spacing={4} align="flex-start" w="full">
-        <VStack spacing={1} align={["flex-start", "center"]} w="full" mb="3">
-          <Heading className="Heading_create_acc">Create a new account</Heading>
-        </VStack>
+    <section className="flex justify-center w-[95%] mx-auto items-center min-h-screen">
+      <div className="w-full md:max-w-[550px]">
+        <div className="mb-4">
+          <h1 className="text-xl  font-bold ">Hey, Hello 👋</h1>
+          <p className="text-sm">Let's get started by signing up</p>
+        </div>
 
-        <FormControl>
-          <FormLabel mt="10px">First Name</FormLabel>
-          <Input rounded="none" varient="filled" />
+        <form className="flex flex-col gap-4" action="">
+          <div className="flex flex-col">
+            <label className="text-sm" htmlFor="">
+              Name
+            </label>
+            <input
+              type="text"
+              className="bg-gray-100 outline-none mt-2 w-full px-2 py-3 rounded-md"
+            />
+          </div>
 
-          <FormLabel mt="10px">Last Name</FormLabel>
-          <Input rounded="none" varient="filled" />
+          <div className="flex flex-col">
+            <label className="text-sm" htmlFor="">
+              Email address
+            </label>
+            <input
+              type="text"
+              className="bg-gray-100 outline-none mt-2 w-full px-2 py-3 rounded-md"
+            />
+          </div>
 
-          <FormLabel mt="10px">E-mail Address</FormLabel>
-          <Input rounded="none" varient="filled" />
+          <div className="flex flex-col">
+            <label className="text-sm" htmlFor="">
+              Password
+            </label>
+            <input
+              type="password"
+              className="bg-gray-100 outline-none mt-2 w-full px-2 py-3 rounded-md"
+            />
+          </div>
 
-          <FormLabel mt="10px">Password</FormLabel>
-          <Input rounded="none" varient="filled" type="password" />
-        </FormControl>
-      </VStack>
-      <Button
-        className="signup_btn"
-        mt="20px"
-        bgColor="#2176FF"
-        rounded="none"
-        color="white"
-        w={["full", "full"]}
-        alignSelf="end"
-      >
-        Create account
-      </Button>
-      <Center>
-        <HStack>
-          <Text mt="20px">or</Text>
-        </HStack>
-      </Center>
-      <Center>
-        <HStack mt="20px">
-          <Text>Already have an account? </Text>
-          <Link to="/login" className="register_link">
+          <button className="bg-primary  text-white px-2 py-3 rounded-md">
+            Sign Up
+          </button>
+        </form>
+
+        <div className="flex items-center justify-center mt-4 text-sm gap-2">
+          <p>Already have an account?</p>
+          <Link to="/login" className="text-primary cursor-pointer">
             Login
           </Link>
-        </HStack>
-      </Center>
-    </Box>
-  );
+        </div>
+
+        <span className="justify-center my-6 flex items-center font-light">
+          or
+        </span>
+
+        <div className="flex items-center gap-4 flex-col sm:flex-row">
+          <a
+            href=""
+            className="bg-white w-full  text-center text-primary border border-primary px-2 py-3 rounded-md"
+          >
+            Join as organization
+          </a>
+
+          <a
+            href=""
+            className="bg-white w-full  text-center text-primary border border-primary px-2 py-3 rounded-md"
+          >
+            Join as restaurant
+          </a>
+        </div>
+      </div>
+    </section>
+  )
 }
