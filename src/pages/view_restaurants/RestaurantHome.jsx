@@ -1,5 +1,5 @@
-import React from "react";
-import RestaurantProduct from "./RestaurantProduct";
+import React from "react"
+import RestaurantProduct from "./RestaurantProduct"
 import {
   Box,
   Image,
@@ -10,9 +10,9 @@ import {
   Circle,
   Button,
   Center,
-} from "@chakra-ui/react";
-import { GrLocation } from "react-icons/gr";
-import { AiOutlineLeft } from "react-icons/ai";
+} from "@chakra-ui/react"
+import { GrLocation } from "react-icons/gr"
+import { AiOutlineLeft } from "react-icons/ai"
 
 const RestaurantHome = () => {
   return (
@@ -63,7 +63,7 @@ const RestaurantHome = () => {
         <Button>continue purchase</Button>
       </Center>
     </>
-  );
-};
+  )
+}
 
-export default RestaurantHome;
+export default RestaurantHome
