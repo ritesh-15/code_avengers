@@ -21,28 +21,44 @@ import DonationHistory from "../pages/history/DonationHistory";
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/">
-      <Route path="/">
-        <Route
-          path="/login"
-          element={
-            <>
-              <Login />
-            </>
-          }
-        />
+      <Route
+        path="/"
+        element={
+          <>
+            <Protected>
+              <HomeRestaurant />
+            </Protected>
+          </>
+        }
+      />
 
-        <Route
-          path="/register"
-          element={
-            <>
+      <Route
+        path="/login"
+        element={
+          <>
+            <Protected isAuthRoute>
+              <Login />
+            </Protected>
+          </>
+        }
+      />
+
+      <Route
+        path="/register"
+        element={
+          <>
+            <Protected isAuthRoute>
               <Register />
-            </>
-          }
-        />
-        <Route
-          path="/donate"
-          element={
-            <>
+            </Protected>
+          </>
+        }
+      />
+
+      <Route
+        path="/donate"
+        element={
+          <>
+            <Protected>
               <DonateNow />
             </>
           }
@@ -81,15 +97,33 @@ export const router = createBrowserRouter(
         />
       </Route>
 
-      <Route path="/restaurant" element={<RestaurantLayout />}>
+      <Route
+        path="/restaurant"
+        element={
+          <>
+            <RestaurantOwner>
+              <RestaurantLayout />
+            </RestaurantOwner>
+          </>
+        }
+      >
         <Route path="" index element={<Items />} />
         <Route path="items/:id" index element={<SingleItem />} />
         <Route path="donations" index element={<Donations />} />
         <Route path="orders" index element={<Order />} />
       </Route>
 
-      <Route path="/organization" element={<OrganizationLayout />}>
-        <Route path="donations" index element={<OrgnizationDonations />} />
+      <Route
+        path="/organization"
+        element={
+          <>
+            <OrganizationOwner>
+              <OrganizationLayout />
+            </OrganizationOwner>
+          </>
+        }
+      >
+        <Route path="donations" element={<OrgnizationDonations />} />
       </Route>
     </Route>
   )

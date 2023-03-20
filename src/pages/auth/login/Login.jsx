@@ -1,62 +1,108 @@
+import { useToast } from "@chakra-ui/toast"
+import { useFormik } from "formik"
 import React from "react"
-import { Link } from "react-router-dom"
-import { Box, Text, Heading, VStack, HStack, Center } from "@chakra-ui/layout"
-import {
-  Button,
-  Checkbox,
-  FormControl,
-  FormLabel,
-  Input,
-} from "@chakra-ui/react"
+import { useMutation } from "react-query"
+import { useDispatch } from "react-redux"
+import { Link, useNavigate } from "react-router-dom"
+import { setUser } from "../../../app/slices/userSlice"
+import FormControl from "../../../components/form_control/FormControl"
+import { login } from "../../../services/auth.service"
+import { LoginSchema } from "../../../validation/auth_validation"
 import "./Login.css"
 
 export default function Login() {
+  const toast = useToast()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const { handleChange, handleSubmit, values, errors } = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: LoginSchema,
+    onSubmit: (values) =>
+      loginMutation.mutate({
+        identifier: values.email,
+        ...values,
+      }),
+  })
+
+  const loginMutation = useMutation(login, {
+    onSuccess: (payload) => {
+      // store the jwt token
+      localStorage.setItem("jwt_token", payload.data.jwt)
+
+      // store the current logged in user
+      dispatch(setUser(payload.data.user))
+
+      toast({
+        title: "Account created.",
+        description: "We've created your account for you.",
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+      })
+
+      const { isOrganization, isRestaurant } = payload.data.user
+
+      if (isOrganization) return navigate("/orgniztion")
+      if (isRestaurant) return navigate("/restaurant")
+
+      navigate("/")
+    },
+    onError: (e) => {
+      toast({
+        title: "Something went wrong!",
+        description: e.response.data.error.message,
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+      })
+    },
+  })
+
   return (
-    <Box
-      w={["full", "md"]}
-      p={[8, 10]}
-      mt={[10, "10vh"]}
-      mx="auto"
-      border={["none", "10px"]}
-      borderColor={["", "grey"]}
-      borederRadius={10}
-    >
-      <VStack spacing={4} align="flex-start" w="full">
-        <VStack spacing={1} align={["flex-start", "center"]} w="full" mb="3">
-          <Heading>Login</Heading>
-        </VStack>
+    <section className="flex justify-center w-[95%] mx-auto items-center min-h-screen">
+      <div className="w-full md:max-w-[550px]">
+        <div className="mb-4">
+          <h1 className="text-xl  font-bold ">Hey, Hello 👋</h1>
+          <p className="text-sm">Let's get started by signing you in</p>
+        </div>
 
-        <FormControl>
-          <FormLabel mt="20px">E-mail Address</FormLabel>
-          <Input mb="1em" rounded="none" varient="filled" />
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4" action="">
+          <FormControl
+            onChange={handleChange}
+            label="Email address"
+            error={errors.email}
+            value={values.email}
+            name="email"
+          />
 
-          <FormLabel>Password</FormLabel>
-          <Input mb="1em" rounded="none" varient="filled" type="password" />
-        </FormControl>
-      </VStack>
-      <Button
-        bgColor="#2176FF"
-        rounded="none"
-        color="white"
-        w={["full", "full"]}
-        mt="20px"
-        alignSelf="end"
-      >
-        Login
-      </Button>
-      <Center>
-        <HStack>
-          <Text mt="20px">or</Text>
-        </HStack>
-      </Center>
-      <Center>
-        <HStack mt="20px">
-          <Text>Don't have a account? </Text>
-          <Link to="/register" className="register_link">
+          <FormControl
+            onChange={handleChange}
+            label="Password"
+            error={errors.password}
+            value={values.password}
+            type="password"
+            name="password"
+          />
+
+          <button
+            type="submit"
+            className="bg-primary  text-white px-2 py-3 rounded-md"
+          >
+            Sign In
+          </button>
+        </form>
+
+        <div className="flex items-center justify-center mt-4 text-sm gap-2">
+          <p>Dosn't have account yet?</p>
+          <Link to="/register" className="text-primary cursor-pointer">
             Register
           </Link>
-        </HStack>
-      </Center>
-    </Box>
+        </div>
+      </div>
+    </section>
   )
 }
