@@ -6,6 +6,7 @@ import {
 import Login from "../pages/auth/login/Login";
 import Register from "../pages/auth/register/Register";
 import Event from "../event/Event";
+import Cart from '../pages/cart/Cart'
 import HomeRestaurant from "../pages/Home/HomeRestaurant";
 import RestaurantLayout from "../layout/RestaurantLayout";
 import Donations from "../pages/restaurant/donations/Donations";
@@ -29,6 +30,7 @@ export const router = createBrowserRouter(
         element={<Event title="Event" location="Pune, Maharashtra" />}
       />
       <Route path="/donate" element={<DonateNow />} />
+      <Route path="/cart" element={<Cart/>}/>
 
       <Route path="/restaurant" element={<RestaurantLayout />}>
         <Route path="" index element={<Items />} />
