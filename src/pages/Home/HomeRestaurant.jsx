@@ -1,21 +1,24 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { HStack, Spacer, Text } from "@chakra-ui/layout"
 import { Menu, MenuButton, Box, Image, MenuItem } from "@chakra-ui/react"
 import NavFooter from "../../Components/NavFooter"
 import Header from "../../Components/Header"
+import api from "../../api/axios"
+import { Link } from "react-router-dom"
+import Hotel from "./Hotel"
 
 const homeRestaurant = () => {
-  const [rests, setRests] = useState([]);
+  const [rests, setRests] = useState([])
   const url =
-    "https://codeavengersserver-production.up.railway.app/api/restaurants";
+    "https://codeavengersserver-production.up.railway.app/api/restaurants"
   const fetchData = async () => {
-    const res = await api.get(url);
-    setRests(res.data.data);
-  };
+    const res = await api.get(url)
+    setRests(res.data.data)
+  }
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
   return (
     <div>
@@ -41,7 +44,7 @@ const homeRestaurant = () => {
                 location={element.attributes.location}
               />
             </Link>
-          );
+          )
         })}
       </div>
 
