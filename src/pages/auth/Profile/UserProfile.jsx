@@ -13,7 +13,9 @@ function UserProfile() {
     <div className="container">
       <div className="arrow_heading_div">
         <div className="back_arrow_div">
-          <IoIosArrowBack className="back_arrow" />
+          <Link to="/">
+            <IoIosArrowBack className="back_arrow" />
+          </Link>
         </div>
         <div className="heading_name">
           <Heading>
@@ -33,7 +35,9 @@ function UserProfile() {
             </div>
             <div>
               <button className="edit_details_btn">
-                <BiEditAlt />
+                <Link to="/edit_profile">
+                  <BiEditAlt />
+                </Link>
               </button>
             </div>
           </div>

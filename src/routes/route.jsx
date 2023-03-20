@@ -2,17 +2,19 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-} from "react-router-dom"
-import OrganizationLayout from "../layout/OrganizationLayout"
-import RestaurantLayout from "../layout/RestaurantLayout"
-import Login from "../pages/auth/login/Login"
-import Register from "../pages/auth/register/Register"
-import OrgnizationDonations from "../pages/organization/donations/OrgnizationDonations"
-import Donations from "../pages/restaurant/donations/Donations"
-import Items from "../pages/restaurant/items/Items"
-import SingleItem from "../pages/restaurant/item[id]/SingleItem"
-import Order from "../pages/restaurant/orders/Order"
-import DonateNow from "../pages/Donate/DonateNow"
+} from "react-router-dom";
+import OrganizationLayout from "../layout/OrganizationLayout";
+import RestaurantLayout from "../layout/RestaurantLayout";
+import Login from "../pages/auth/login/Login";
+import Register from "../pages/auth/register/Register";
+import OrgnizationDonations from "../pages/organization/donations/OrgnizationDonations";
+import Donations from "../pages/restaurant/donations/Donations";
+import Items from "../pages/restaurant/items/Items";
+import SingleItem from "../pages/restaurant/item[id]/SingleItem";
+import Order from "../pages/restaurant/orders/Order";
+import DonateNow from "../pages/Donate/DonateNow";
+import UserProfile from "../pages/auth/Profile/UserProfile";
+import EditProfile from "../pages/auth/Profile/EditProfile";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -43,6 +45,22 @@ export const router = createBrowserRouter(
             </>
           }
         />
+        <Route
+          path="/userprofile"
+          element={
+            <>
+              <UserProfile />
+            </>
+          }
+        />
+        <Route
+          path="/edit_profile"
+          element={
+            <>
+              <EditProfile />
+            </>
+          }
+        />
       </Route>
 
       <Route path="/restaurant" element={<RestaurantLayout />}>
@@ -57,4 +75,4 @@ export const router = createBrowserRouter(
       </Route>
     </Route>
   )
-)
+);
