@@ -12,6 +12,7 @@ import Donations from "../pages/restaurant/donations/Donations"
 import Items from "../pages/restaurant/items/Items"
 import SingleItem from "../pages/restaurant/item[id]/SingleItem"
 import Order from "../pages/restaurant/orders/Order"
+import DonateNow from "../pages/Donate/DonateNow"
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
