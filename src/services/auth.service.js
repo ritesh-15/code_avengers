@@ -20,3 +20,5 @@ export const joinAsOrganization = (data) => {
 export const joinAsRestaurant = (data) => {
   return api.post("/restaurants", data)
 }
+
+export const getOrganization = () => api.get("/organizations")

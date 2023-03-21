@@ -1,33 +1,33 @@
-import React, { useState } from "react";
-import { Select, useToast } from "@chakra-ui/react";
-import "./JoinOrg.css";
-import { useNavigate } from "react-router";
-import { useFormik } from "formik";
-import { JoinOrganizationSchema } from "../../validation/join_org_validation";
-import FormControl from "../../components/form_control/FormControl";
-import { useMutation } from "react-query";
+import React, { useState } from "react"
+import { Select, useToast } from "@chakra-ui/react"
+import "./JoinOrg.css"
+import { useNavigate } from "react-router"
+import { useFormik } from "formik"
+import { JoinOrganizationSchema } from "../../validation/join_org_validation"
+import FormControl from "../../components/form_control/FormControl"
+import { useMutation } from "react-query"
 import {
   joinAsOrganization,
   register,
   updateUser,
-} from "../../services/auth.service";
-import axios from "axios";
-import { useDispatch } from "react-redux";
-import { setUser, setJWT } from "../../app/slices/userSlice";
+} from "../../services/auth.service"
+import axios from "axios"
+import { useDispatch } from "react-redux"
+import { setUser, setJWT } from "../../app/slices/userSlice"
 
 export default function JoinOrganization() {
-  const toast = useToast();
-  const navigate = useNavigate();
+  const toast = useToast()
+  const navigate = useNavigate()
 
-  const [image, setImage] = useState(null);
-  const [type, setType] = useState("");
-  const dispatch = useDispatch();
+  const [image, setImage] = useState(null)
+  const [type, setType] = useState("")
+  const dispatch = useDispatch()
 
-  const registerOraganizationMutation = useMutation(register);
+  const registerOraganizationMutation = useMutation(register)
   const updateUserMutation = useMutation(({ id, data }) => {
-    updateUser(id, data);
-  });
-  const joinOrganizationMutation = useMutation(joinAsOrganization);
+    updateUser(id, data)
+  })
+  const joinOrganizationMutation = useMutation(joinAsOrganization)
 
   const { handleChange, handleSubmit, values, errors } = useFormik({
     initialValues: {
@@ -40,9 +40,9 @@ export default function JoinOrganization() {
 
     validationSchema: JoinOrganizationSchema,
     onSubmit: async (values) => {
-      const formData = new FormData();
-      formData.append("file", image);
-      formData.append("upload_preset", "jmx1hbwt");
+      const formData = new FormData()
+      formData.append("file", image)
+      formData.append("upload_preset", "jmx1hbwt")
 
       const [user, uploadedImage] = await Promise.all([
         registerOraganizationMutation.mutateAsync({
@@ -58,7 +58,7 @@ export default function JoinOrganization() {
           }/upload`,
           formData
         ),
-      ]);
+      ])
 
       const organization = await joinOrganizationMutation.mutateAsync({
         data: {
@@ -67,7 +67,7 @@ export default function JoinOrganization() {
           image: uploadedImage.data.secure_url,
           type: type,
         },
-      });
+      })
 
       const updatedUser = await updateUserMutation.mutateAsync({
         id: user.data.user.id,
@@ -75,10 +75,10 @@ export default function JoinOrganization() {
           isOrganization: true,
           organization: organization.data.data.id,
         },
-      });
+      })
 
-      dispatch(setUser(updatedUser));
-      dispatch(setJWT(user.data.jwt));
+      dispatch(setUser(updatedUser))
+      dispatch(setJWT(user.data.jwt))
 
       toast({
         title: "Organization created successfully!",
@@ -86,13 +86,13 @@ export default function JoinOrganization() {
         status: "success",
         duration: 4000,
         isClosable: true,
-      });
+      })
     },
-  });
+  })
 
   function handleImageSet(e) {
-    const files = e.target.files;
-    setImage(files[0]);
+    const files = e.target.files
+    setImage(files[0])
   }
 
   return (
@@ -173,8 +173,8 @@ export default function JoinOrganization() {
 
           <Select
             onChange={(e) => {
-              console.log(e.target.value);
-              setType(e.target.value);
+              console.log(e.target.value)
+              setType(e.target.value)
             }}
             value={type}
             name="type"
@@ -196,5 +196,5 @@ export default function JoinOrganization() {
         </form>
       </div>
     </section>
-  );
+  )
 }

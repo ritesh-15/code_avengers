@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import {
   Box,
   Image,
@@ -10,10 +10,10 @@ import {
   Button,
   Badge,
   Spacer,
-} from "@chakra-ui/react";
-import { BiCartAdd } from "react-icons/bi";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../app/slices/cartSlice";
+} from "@chakra-ui/react"
+import { BiCartAdd } from "react-icons/bi"
+import { useDispatch } from "react-redux"
+import { addToCart } from "../../app/slices/cartSlice"
 const RestaurantProduct = ({
   title,
   description,
@@ -21,9 +21,10 @@ const RestaurantProduct = ({
   price,
   image,
   discount,
+  id,
   type,
 }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   return (
     <Card
       direction={{ base: "column", sm: "row" }}
@@ -46,6 +47,7 @@ const RestaurantProduct = ({
         <HStack padding={2}>
           <BiCartAdd
             size={25}
+            cursor="pointer"
             onClick={() => {
               dispatch(
                 addToCart({
@@ -57,7 +59,7 @@ const RestaurantProduct = ({
                   discount,
                   image,
                 })
-              );
+              )
             }}
           />
           <Spacer />
@@ -72,7 +74,7 @@ const RestaurantProduct = ({
         </HStack>
       </Stack>
     </Card>
-  );
-};
+  )
+}
 
-export default RestaurantProduct;
+export default RestaurantProduct
