@@ -72,9 +72,9 @@
   background-color: transparent !important;
 }
 .user_details_img_info {
-  display: flex;
   width: 100%;
   height: auto;
+  display: flex;
 }
 .user_img_div {
   height: auto;
@@ -96,10 +96,12 @@
   height: auto;
   width: 75%;
 }
+
 .back_arrow {
   margin-top: 25px;
   height: 25px;
   width: 25px;
+  cursor: pointer;
 }
 .arrow_heading_div {
   display: flex;
@@ -132,6 +134,14 @@
   align-items: center;
   height: auto;
   width: 100%;
+}
+.payment_history_div:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  transition: 250ms;
+}
+.donation_history_div:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  transition: 450ms;
 }
 .payment_icon_div {
   border-radius: 50%;

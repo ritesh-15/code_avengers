@@ -1,0 +1,52 @@
+.container {
+  height: 100vh;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+.back_arrow {
+  margin-top: 25px;
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}
+.arrow_heading_div {
+  display: flex;
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+.back_arrow_div {
+  width: 10%;
+  height: auto;
+}
+.user_details_img_info_edit {
+  height: 150px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.user_img_div_edit {
+  height: auto;
+  width: auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.user_img_div_edit img {
+  margin: auto;
+  padding: auto;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+button:hover {
+  background-color: #0c53c5 !important;
+  transition: 350ms;
+}
+.register_link {
+  color: #000000;
+  text-decoration: underline;
+}

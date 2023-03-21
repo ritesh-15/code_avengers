@@ -15,6 +15,18 @@ import OrganizationLayout from "../layout/OrganizationLayout";
 import Protected from "./Protected";
 import OrgnizationDonations from "../pages/organization/donations/OrgnizationDonations";
 
+import Login from "../pages/auth/login/Login";
+import Register from "../pages/auth/register/Register";
+import HomeRestaurant from "../pages/Home/HomeRestaurant";
+import RestaurantLayout from "../layout/RestaurantLayout";
+import Donations from "../pages/restaurant/donations/Donations";
+import Items from "../pages/restaurant/items/Items";
+import SingleItem from "../pages/restaurant/item[id]/SingleItem";
+import Order from "../pages/restaurant/orders/Order";
+import OrganizationLayout from "../layout/OrganizationLayout";
+import Protected from "./Protected";
+import OrgnizationDonations from "../pages/organization/donations/OrgnizationDonations";
+
 import DonateNow from "../pages/Donate/DonateNow";
 import RestaurantOwner from "./RestaurantOwner";
 import OrganizationOwner from "./OrganizationOwner";
@@ -49,8 +61,37 @@ export const router = createBrowserRouter(
           </>
         }
       />
-      
 
+      <Route
+        path="/userProfile"
+        element={
+          <>
+            <Protected>
+              <UserProfile />
+            </Protected>
+          </>
+        }
+      />
+      <Route
+        path="/payment_history/:id"
+        element={
+          <>
+            <Protected>
+              <OrderHistory />
+            </Protected>
+          </>
+        }
+      />
+      <Route
+        path="/donation_history/:id"
+        element={
+          <>
+            <Protected>
+              <DonationHistory />
+            </Protected>
+          </>
+        }
+      />
       <Route
         path="/register"
         element={
@@ -66,7 +107,7 @@ export const router = createBrowserRouter(
         path="/restauranthome/:id"
         element={
           <>
-            <Protected isAuthRoute>
+            <Protected>
               <RestaurantHome />
             </Protected>
           </>
