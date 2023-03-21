@@ -112,19 +112,19 @@ export default function Register() {
         </span>
 
         <div className="flex items-center gap-4 flex-col sm:flex-row">
-          <a
-            href=""
+          <Link
+            to="/join-as-organization"
             className="bg-white w-full  text-center text-primary border border-primary px-2 py-3 rounded-md"
           >
             Join as organization
-          </a>
+          </Link>
 
-          <a
-            href=""
+          <Link
+            to="/join-as-restaurant"
             className="bg-white w-full  text-center text-primary border border-primary px-2 py-3 rounded-md"
           >
             Join as restaurant
-          </a>
+          </Link>
         </div>
       </div>
     </section>

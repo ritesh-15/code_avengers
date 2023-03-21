@@ -89,11 +89,44 @@ export const router = createBrowserRouter(
       />
 
       <Route
+        path="/restauranthome/:id"
+        element={
+          <>
+            <Protected>
+              <RestaurantHome />
+            </Protected>
+          </>
+        }
+      />
+
+      <Route
         path="/donate"
         element={
           <>
             <Protected>
               <DonateNow />
+            </Protected>
+          </>
+        }
+      />
+
+      <Route
+        path="/join-as-organization"
+        element={
+          <>
+            <Protected isAuthRoute>
+              <JoinOrganization />
+            </Protected>
+          </>
+        }
+      />
+
+      <Route
+        path="/join-as-restaurant"
+        element={
+          <>
+            <Protected isAuthRoute>
+              <JoinRestaurant />
             </Protected>
           </>
         }

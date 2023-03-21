@@ -1,43 +1,100 @@
-import React from "react";
-import { useToast } from "@chakra-ui/toast";
-import { Link } from "react-router-dom";
-import { Select } from "@chakra-ui/react";
-import "./JoinRes.css";
-import { useFormik } from "formik";
-import { useMutation } from "react-query";
-import { register } from "../../services/auth.service";
+import React, { useState } from "react"
+import "./JoinRes.css"
+import FormControl from "../../components/form_control/FormControl"
+import { useFormik } from "formik"
+import { JoinRestaurantSchema } from "../../validation/join_org_validation"
+import axios from "axios"
+import {
+  joinAsRestaurant,
+  register,
+  updateUser,
+} from "../../services/auth.service"
+import { useMutation } from "react-query"
+import { setJWT, setUser } from "../../app/slices/userSlice"
 
-export default function joinRes() {
-  const toast = useToast();
-  const { handleSubmit, values, errors } = useFormik({
-    initialValues: {
-      name: "",
-      location: "",
-      description: "",
-    },
-    validationSchema: JoinResSchema,
-    onSubmit: (values) =>
-      MdAppRegistration.mutat({
-        ...values,
-        username: values.name,
-      }),
-  });
+const initialValues = {
+  name: "",
+  email: "",
+  password: "",
+  description: "",
+}
 
-  const addResMutation = useMutation(addRestaurant, {
-    onSuccess: (value) => {
-      //store the jwt token
-      localStorage.setItem("jwt_token", value.data.jwt);
-      user;
+export default function JoinRestaurant() {
+  // states
+  const [image, setImage] = useState(null)
+
+  // mutations
+  const registerOraganizationMutation = useMutation(register)
+  const joinRestaurantMutation = useMutation(joinAsRestaurant)
+  const updateUserMutation = useMutation(({ id, data }) => {
+    updateUser(id, data)
+  })
+
+  // hooks
+  const { handleChange, handleSubmit, values, errors } = useFormik({
+    initialValues,
+    validationSchema: JoinRestaurantSchema,
+    onSubmit: async (values) => {
+      const formData = new FormData()
+      formData.append("file", image)
+      formData.append("upload_preset", "jmx1hbwt")
+
+      const [user, uploadedImage] = await Promise.all([
+        registerOraganizationMutation.mutateAsync({
+          email: values.email,
+          password: values.password,
+          name: values.name,
+          username: values.name,
+        }),
+
+        axios.post(
+          `https://api.cloudinary.com/v1_1/${
+            import.meta.env.VITE_CLOUD_NAME
+          }/upload`,
+          formData
+        ),
+      ])
+
+      const restaurant = await joinRestaurantMutation.mutateAsync({
+        data: {
+          name: values.name,
+          description: values.description,
+          location: values.location,
+          images: uploadedImage.data.secure_url,
+        },
+      })
+
+      const updatedUser = await updateUserMutation.mutateAsync({
+        id: user.data.user.id,
+        data: {
+          isRestaurant: true,
+          restaurant: restaurant.data.data.id,
+        },
+      })
+
+      dispatch(setUser(updatedUser))
+      dispatch(setJWT(user.data.jwt))
+
+      const { isOrganization, isRestaurant } = user.data.user
+
+      if (isOrganization) return navigate("/orgniztion")
+      if (isRestaurant) return navigate("/restaurant")
 
       toast({
-        title: "Restaurant Added.",
-        description: "We've added your restaurant successfully.",
+        title: "Restaurant created successfully!",
+        description: "Successfully created restaurant",
         status: "success",
         duration: 4000,
         isClosable: true,
-      });
+      })
     },
-  });
+  })
+
+  function handleImageSet(e) {
+    const files = e.target.files
+    setImage(files[0])
+  }
+
   return (
     <section className="flex justify-center w-[95%] mx-auto items-center min-h-screen">
       <div className="w-full md:max-w-[550px]">
@@ -46,39 +103,68 @@ export default function joinRes() {
             Save your food with us, Join us as a Restaurant
           </h1>
           <p className="text-lg mt-2 font-light">Come hungry, leave happy.</p>
-          {/* <p className="text-sm">Let's get started by signing up</p> */}
         </div>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4" action="">
-          <FormControl
-            onChange={handleChange}
-            label="Name"
-            error={errors.name}
-            value={values.name}
-            name="name"
-          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <FormControl
+              onChange={handleChange}
+              label="Name"
+              error={errors.name}
+              value={values.name}
+              type="text"
+              name="name"
+            />
 
-          <FormControl
-            onChange={handleChange}
-            label="Name"
-            error={errors.location}
-            value={values.location}
-            name="name"
-          />
+            <FormControl
+              onChange={handleChange}
+              label="Email address"
+              error={errors.email}
+              value={values.email}
+              type="email"
+              name="email"
+            />
+          </div>
 
-          <FormControl
-            onChange={handleChange}
-            label="Name"
-            error={errors.description}
-            value={values.description}
-            name="name"
-          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <FormControl
+              onChange={handleChange}
+              label="Password"
+              error={errors.password}
+              value={values.password}
+              type="password"
+              name="password"
+            />
+
+            <FormControl
+              onChange={handleChange}
+              label="Location"
+              error={errors.location}
+              value={values.location}
+              type="text"
+              name="location"
+            />
+          </div>
 
           <div className="flex flex-col">
             <label className="text-sm" htmlFor="">
-              Images of Restaurant
+              Description
+            </label>
+            <textarea
+              onChange={handleChange}
+              value={values.description}
+              rows="3"
+              name="description"
+              className="bg-gray-100 resize-none outline-none mt-2 w-full px-2 py-3 rounded-md"
+            />
+          </div>
+
+          <div className="flex flex-col">
+            <label className="text-sm" htmlFor="">
+              Images of restaurant
             </label>
             <input
+              onChange={handleImageSet}
               type="file"
               name="file"
               id="file"
@@ -88,7 +174,11 @@ export default function joinRes() {
             />
           </div>
 
-          <button className="bg-primary  text-white px-2 py-3 rounded-md">
+          <button
+            onClick={handleSubmit}
+            type="button"
+            className="bg-primary  text-white px-2 py-3 rounded-md"
+          >
             Join
           </button>
         </form>
