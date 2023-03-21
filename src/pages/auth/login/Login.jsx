@@ -46,7 +46,7 @@ export default function Login() {
 
       const { isOrganization, isRestaurant } = payload.data.user
 
-      if (isOrganization) return navigate("/orgnization")
+      if (isOrganization) return navigate("/organization")
       if (isRestaurant) return navigate("/restaurant")
 
       navigate("/")

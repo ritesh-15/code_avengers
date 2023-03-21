@@ -1,17 +1,17 @@
-import { useToast } from "@chakra-ui/toast";
-import { useFormik } from "formik";
-import React from "react";
-import { useMutation } from "react-query";
-import { Link } from "react-router-dom";
-import FormControl from "../../../components/form_control/FormControl";
-import { register } from "../../../services/auth.service";
-import { RegisterSchema } from "../../../validation/auth_validation";
-import { useDispatch } from "react-redux";
-import { setUser } from "../../../app/slices/userSlice";
+import { useToast } from "@chakra-ui/toast"
+import { useFormik } from "formik"
+import React from "react"
+import { useMutation } from "react-query"
+import { Link } from "react-router-dom"
+import FormControl from "../../../components/form_control/FormControl"
+import { register } from "../../../services/auth.service"
+import { RegisterSchema } from "../../../validation/auth_validation"
+import { useDispatch } from "react-redux"
+import { setUser } from "../../../app/slices/userSlice"
 
 export default function Register() {
-  const toast = useToast();
-  const dispatch = useDispatch();
+  const toast = useToast()
+  const dispatch = useDispatch()
 
   const { handleChange, handleSubmit, values, errors } = useFormik({
     initialValues: {
@@ -25,17 +25,17 @@ export default function Register() {
         ...values,
         username: values.name,
       }),
-  });
+  })
 
   const registerMutation = useMutation(register, {
     onSuccess: (value) => {
       // store the jwt token
-      localStorage.setItem("jwt_token", value.data.jwt);
+      localStorage.setItem("jwt_token", value.data.jwt)
 
       // store the current logged in user
-      dispatch(setUser(value.data.user));
+      dispatch(setUser(value.data.user))
 
-      const { isOrganization, isRestaurant } = value.data.user;
+      const { isOrganization, isRestaurant } = value.data.user
 
       toast({
         title: "Account created.",
@@ -43,12 +43,12 @@ export default function Register() {
         status: "success",
         duration: 4000,
         isClosable: true,
-      });
+      })
 
-      if (isOrganization) return navigate("/orgniztion");
-      if (isRestaurant) return navigate("/restaurant");
+      if (isOrganization) return navigate("/organization")
+      if (isRestaurant) return navigate("/restaurant")
 
-      navigate("/");
+      navigate("/")
     },
     onError: (e) => {
       toast({
@@ -57,9 +57,9 @@ export default function Register() {
         status: "error",
         duration: 4000,
         isClosable: true,
-      });
+      })
     },
-  });
+  })
 
   return (
     <section className="flex justify-center w-[95%] mx-auto items-center min-h-screen">
@@ -128,5 +128,5 @@ export default function Register() {
         </div>
       </div>
     </section>
-  );
+  )
 }
