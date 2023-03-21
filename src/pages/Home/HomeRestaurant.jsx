@@ -28,13 +28,15 @@ const homeRestaurant = () => {
     <div>
       <Header />
 
-      <Image src="src\assets\home2.avif" alt="img" p={5} />
+      <Image src="/home2.avif" alt="img" p={5} />
 
       <Text align={"center"} fontStyle={"italic"}>
         Transforming leftovers into meals
       </Text>
 
-      <Text p={5}>Famous Restaurants near you</Text>
+      <Text fontWeight="bold" p={5}>
+        Famous Restaurants near you
+      </Text>
 
       <div>
         {rests.map((element) => {
@@ -52,7 +54,9 @@ const homeRestaurant = () => {
         })}
       </div>
 
-      <Text p={5}>Nearest organization</Text>
+      <Text fontWeight="bold" p={5}>
+        Nearest organization
+      </Text>
 
       <div>
         {data?.data.data.map(({ id, attributes }) => {

@@ -5,9 +5,12 @@ import { Spacer, Button, Center } from "@chakra-ui/react"
 import { useSelector, useDispatch } from "react-redux"
 import CartItem from "./CartItem"
 import { getTotalPrice } from "../../app/slices/cartSlice"
+import { useNavigate } from "react-router-dom"
 
 const ProductSummary = () => {
   const dispatch = useDispatch()
+  const navigator = useNavigate()
+
   useEffect(() => {
     dispatch(getTotalPrice())
   }, [])
