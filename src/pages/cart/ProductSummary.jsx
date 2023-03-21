@@ -1,11 +1,22 @@
-import React from "react";
-import { AiOutlineLeft } from "react-icons/ai";
-import { HStack, Text, Circle, Box, VStack } from "@chakra-ui/layout";
-import { Image, Spacer, Button, Center } from "@chakra-ui/react";
-import { useSelector } from "react-redux";
-import CartItem from "./CartItem";
+import { React, useEffect } from "react"
+import { AiOutlineLeft } from "react-icons/ai"
+import { HStack, Text, Circle, Box, VStack } from "@chakra-ui/layout"
+import { Spacer, Button, Center } from "@chakra-ui/react"
+import { useSelector, useDispatch } from "react-redux"
+import CartItem from "./CartItem"
+import { getTotalPrice } from "../../app/slices/cartSlice"
+
 const ProductSummary = () => {
-  const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getTotalPrice())
+  }, [])
+
+  const { cart, totalPrice } = useSelector((state) => state.cart)
+
+  let discount = 0
+  cart.forEach((item) => (discount += item.discount))
+
   return (
     <div>
       <HStack>
@@ -17,10 +28,19 @@ const ProductSummary = () => {
       <Text fontSize={20} p={3}>
         Order Summary
       </Text>
-      {/* {cart.length > 0
-        ? cart.map((item) => <CartItem imageUrl={item.image} />)
-        : ""} */}
-      <CartItem />
+
+      <div>
+        {cart.map((item) => {
+          return (
+            <CartItem
+              name={item.name}
+              imageUrl={item.image}
+              price={item.price}
+              quantity={item.quantity}
+            />
+          )
+        })}
+      </div>
       <Text fontSize={20} p={3}>
         Payment Summary
       </Text>
@@ -28,25 +48,25 @@ const ProductSummary = () => {
       <HStack m={4}>
         <Text>Order Total</Text>
         <Spacer />
-        <Text></Text>
+        <Text>${totalPrice}</Text>
       </HStack>
 
       <HStack m={4}>
         <Text>Tax (18%)</Text>
         <Spacer />
-        <Text>$7</Text>
+        <Text>${0.18 * totalPrice}</Text>
       </HStack>
 
       <HStack m={4}>
         <Text>Discount</Text>
         <Spacer />
-        <Text>-$10</Text>
+        <Text>${discount}</Text>
       </HStack>
 
       <HStack m={4}>
         <Text>Delivery Charges</Text>
         <Spacer />
-        <Text>$2</Text>
+        <Text>$0</Text>
       </HStack>
 
       <hr style={{ margin: "10px", border: "1px solid black" }} />
@@ -54,7 +74,7 @@ const ProductSummary = () => {
       <HStack m={4}>
         <Text fontWeight={"bold"}>Total Amount</Text>
         <Spacer />
-        <Text fontWeight={"bold"}>$36</Text>
+        <Text fontWeight={"bold"}>${totalPrice - discount}</Text>
       </HStack>
 
       <Center>
@@ -63,7 +83,7 @@ const ProductSummary = () => {
         </Button>
       </Center>
     </div>
-  );
-};
+  )
+}
 
-export default ProductSummary;
+export default ProductSummary

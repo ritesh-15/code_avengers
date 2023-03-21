@@ -1,5 +1,5 @@
-import { React, useState, useEffect } from "react";
-import RestaurantProduct from "../../Components/restaurant_product/RestaurantProduct";
+import { React, useState, useEffect } from "react"
+import RestaurantProduct from "../../Components/restaurant_product/RestaurantProduct"
 import {
   Box,
   Image,
@@ -15,7 +15,7 @@ import { GrLocation } from "react-icons/gr"
 import { AiOutlineLeft } from "react-icons/ai"
 import api from "../../api/axios"
 import Hotel from "../Home/Hotel"
-import RestaurantProduct from "../../components/restaurant_product/RestaurantProduct"
+import { Link } from "react-router-dom"
 
 const RestaurantHome = (props) => {
   const currHotel = {
@@ -85,39 +85,42 @@ const RestaurantHome = (props) => {
         <Divider mt={2} borderWidth={1} />
         <Stack mt={5}>
           <Text fontWeight="bold">Products</Text>
-          {restaurant?.attributes.products.data.map(({ attributes }, index) => {
-            const {
-              name,
-              description,
-              quantity,
-              price,
-              discount,
-              image,
-              type,
-            } = attributes
-            return (
-              <RestaurantProduct
-                key={index}
-                title={name}
-                description={description}
-                image={image}
-                qunatity={quantity}
-                price={price}
-                discount={discount}
-                type={type}
-              />
-            )
-          })}
+          {restaurant?.attributes.products.data.map(
+            ({ attributes, id }, index) => {
+              const {
+                name,
+                description,
+                quantity,
+                price,
+                discount,
+                image,
+                type,
+              } = attributes
+              return (
+                <RestaurantProduct
+                  key={index}
+                  title={name}
+                  description={description}
+                  image={image}
+                  qunatity={quantity}
+                  price={price}
+                  discount={discount}
+                  type={type}
+                  id={id}
+                />
+              )
+            }
+          )}
         </Stack>
       </Box>
       <Center my="2">
-        <button onMouseOver={mouseOver} onMouseOut={mouseOut}>
-          continue purchase
-        </button>
+        <Link to="/product-summary">
+          <button>continue purchase</button>
+        </Link>
       </Center>
     </>
-  );
-};
+  )
+}
 
 export default RestaurantHome
 

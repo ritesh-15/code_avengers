@@ -1,19 +1,19 @@
-import { useToast } from "@chakra-ui/toast";
-import { useFormik } from "formik";
-import React from "react";
-import { useMutation } from "react-query";
-import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { setUser } from "../../../app/slices/userSlice";
-import FormControl from "../../../components/form_control/FormControl";
-import { login } from "../../../services/auth.service";
-import { LoginSchema } from "../../../validation/auth_validation";
-import "./Login.css";
+import { useToast } from "@chakra-ui/toast"
+import { useFormik } from "formik"
+import React from "react"
+import { useMutation } from "react-query"
+import { useDispatch } from "react-redux"
+import { Link, useNavigate } from "react-router-dom"
+import { setUser } from "../../../app/slices/userSlice"
+import FormControl from "../../../components/form_control/FormControl"
+import { login } from "../../../services/auth.service"
+import { LoginSchema } from "../../../validation/auth_validation"
+import "./Login.css"
 
 export default function Login() {
-  const toast = useToast();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const toast = useToast()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const { handleChange, handleSubmit, values, errors } = useFormik({
     initialValues: {
@@ -26,15 +26,15 @@ export default function Login() {
         identifier: values.email,
         ...values,
       }),
-  });
+  })
 
   const loginMutation = useMutation(login, {
     onSuccess: (payload) => {
       // store the jwt token
-      localStorage.setItem("jwt_token", payload.data.jwt);
+      localStorage.setItem("jwt_token", payload.data.jwt)
 
       // store the current logged in user
-      dispatch(setUser(payload.data.user));
+      dispatch(setUser(payload.data.user))
 
       toast({
         title: "Logged in successfully!",
@@ -42,14 +42,14 @@ export default function Login() {
         status: "success",
         duration: 4000,
         isClosable: true,
-      });
+      })
 
-      const { isOrganization, isRestaurant } = payload.data.user;
+      const { isOrganization, isRestaurant } = payload.data.user
 
-      if (isOrganization) return navigate("/orgniztion");
-      if (isRestaurant) return navigate("/restaurant");
+      if (isOrganization) return navigate("/orgniztion")
+      if (isRestaurant) return navigate("/restaurant")
 
-      navigate("/userProfile");
+      navigate("/")
     },
     onError: (e) => {
       toast({
@@ -58,9 +58,9 @@ export default function Login() {
         status: "error",
         duration: 4000,
         isClosable: true,
-      });
+      })
     },
-  });
+  })
 
   return (
     <section className="flex justify-center w-[95%] mx-auto items-center min-h-screen">
@@ -104,5 +104,5 @@ export default function Login() {
         </div>
       </div>
     </section>
-  );
+  )
 }

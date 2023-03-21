@@ -1,6 +1,6 @@
-import React from "react";
-import { HStack, Text, Spacer, Box, VStack } from "@chakra-ui/layout";
-import { Img } from "@chakra-ui/react";
+import React from "react"
+import { HStack, Text, Spacer, Box, VStack } from "@chakra-ui/layout"
+import { Img } from "@chakra-ui/react"
 
 const CartItem = (props) => {
   return (
@@ -14,14 +14,16 @@ const CartItem = (props) => {
           borderRadius={10}
         />
         <Spacer />
-        <Text>`{props.quantity} X {props.price}`</Text>
+        <Text>
+          {props.quantity} X {props.price}
+        </Text>
         <Spacer />
         <Text>{props.name}</Text>
         <Spacer />
-        <Text>{props.price}</Text>
+        <Text>${props.price}</Text>
       </HStack>
     </Box>
-  );
-};
+  )
+}
 
-export default CartItem;
+export default CartItem

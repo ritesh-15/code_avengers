@@ -6,6 +6,8 @@ import Header from "../../Components/Header"
 import api from "../../api/axios"
 import { Link } from "react-router-dom"
 import Hotel from "./Hotel"
+import { useQuery } from "react-query"
+import { getOrganization } from "../../services/auth.service"
 
 const homeRestaurant = () => {
   const [rests, setRests] = useState([])
@@ -15,6 +17,8 @@ const homeRestaurant = () => {
     const res = await api.get(url)
     setRests(res.data.data)
   }
+
+  const { data } = useQuery(["organizations"], getOrganization)
 
   useEffect(() => {
     fetchData()
@@ -48,9 +52,25 @@ const homeRestaurant = () => {
         })}
       </div>
 
+      <Text p={5}>Nearest organization</Text>
+
+      <div>
+        {data?.data.data.map(({ id, attributes }) => {
+          return (
+            <Hotel
+              key={id}
+              title={attributes.name}
+              description={attributes.description}
+              image={attributes.image}
+              location={attributes.location}
+            />
+          )
+        })}
+      </div>
+
       <NavFooter />
     </div>
-  );
-};
+  )
+}
 
-export default homeRestaurant;
+export default homeRestaurant
