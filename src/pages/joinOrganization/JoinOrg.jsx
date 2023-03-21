@@ -1,39 +1,33 @@
-<<<<<<< HEAD
-import React from "react";
-import { Link } from "react-router-dom";
-import { Select } from "@chakra-ui/react";
+import React, { useState } from "react";
+import { Select, useToast } from "@chakra-ui/react";
 import "./JoinOrg.css";
-=======
-import React, { useState } from "react"
-import { Select, useToast } from "@chakra-ui/react"
-import "./JoinOrg.css"
-import { useNavigate } from "react-router"
-import { useFormik } from "formik"
-import { JoinOrganizationSchema } from "../../validation/join_org_validation"
-import FormControl from "../../components/form_control/FormControl"
-import { useMutation } from "react-query"
+import { useNavigate } from "react-router";
+import { useFormik } from "formik";
+import { JoinOrganizationSchema } from "../../validation/join_org_validation";
+import FormControl from "../../components/form_control/FormControl";
+import { useMutation } from "react-query";
 import {
   joinAsOrganization,
   register,
   updateUser,
-} from "../../services/auth.service"
-import axios from "axios"
-import { useDispatch } from "react-redux"
-import { setUser, setJWT } from "../../app/slices/userSlice"
+} from "../../services/auth.service";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setUser, setJWT } from "../../app/slices/userSlice";
 
 export default function JoinOrganization() {
-  const toast = useToast()
-  const navigate = useNavigate()
+  const toast = useToast();
+  const navigate = useNavigate();
 
-  const [image, setImage] = useState(null)
-  const [type, setType] = useState("")
-  const dispatch = useDispatch()
+  const [image, setImage] = useState(null);
+  const [type, setType] = useState("");
+  const dispatch = useDispatch();
 
-  const registerOraganizationMutation = useMutation(register)
+  const registerOraganizationMutation = useMutation(register);
   const updateUserMutation = useMutation(({ id, data }) => {
-    updateUser(id, data)
-  })
-  const joinOrganizationMutation = useMutation(joinAsOrganization)
+    updateUser(id, data);
+  });
+  const joinOrganizationMutation = useMutation(joinAsOrganization);
 
   const { handleChange, handleSubmit, values, errors } = useFormik({
     initialValues: {
@@ -46,9 +40,9 @@ export default function JoinOrganization() {
 
     validationSchema: JoinOrganizationSchema,
     onSubmit: async (values) => {
-      const formData = new FormData()
-      formData.append("file", image)
-      formData.append("upload_preset", "jmx1hbwt")
+      const formData = new FormData();
+      formData.append("file", image);
+      formData.append("upload_preset", "jmx1hbwt");
 
       const [user, uploadedImage] = await Promise.all([
         registerOraganizationMutation.mutateAsync({
@@ -64,7 +58,7 @@ export default function JoinOrganization() {
           }/upload`,
           formData
         ),
-      ])
+      ]);
 
       const organization = await joinOrganizationMutation.mutateAsync({
         data: {
@@ -73,7 +67,7 @@ export default function JoinOrganization() {
           image: uploadedImage.data.secure_url,
           type: type,
         },
-      })
+      });
 
       const updatedUser = await updateUserMutation.mutateAsync({
         id: user.data.user.id,
@@ -81,10 +75,10 @@ export default function JoinOrganization() {
           isOrganization: true,
           organization: organization.data.data.id,
         },
-      })
+      });
 
-      dispatch(setUser(updatedUser))
-      dispatch(setJWT(user.data.jwt))
+      dispatch(setUser(updatedUser));
+      dispatch(setJWT(user.data.jwt));
 
       toast({
         title: "Organization created successfully!",
@@ -92,25 +86,19 @@ export default function JoinOrganization() {
         status: "success",
         duration: 4000,
         isClosable: true,
-      })
+      });
     },
-  })
+  });
 
   function handleImageSet(e) {
-    const files = e.target.files
-    setImage(files[0])
+    const files = e.target.files;
+    setImage(files[0]);
   }
->>>>>>> e1ad15ceaadf572dd9934e5b359bea7c1e9ed2ba
 
   return (
     <section className="flex justify-center w-[95%] mx-auto items-center min-h-screen">
-<<<<<<< HEAD
-      <div className="w-full md:max-w-[550px]">
-        <div className="mb-4">
-=======
       <div className="w-full md:max-w-[750px]">
         <div className="mb-8">
->>>>>>> e1ad15ceaadf572dd9934e5b359bea7c1e9ed2ba
           <h1 className="text-2xl font-bold">Join with us as a organization</h1>
           <p className="text-lg mt-2 font-light">
             We make a living by what we get, but we make a life by what we give
@@ -183,19 +171,10 @@ export default function JoinOrganization() {
             />
           </div>
 
-<<<<<<< HEAD
-          <Select placeholder="Select option">
-            <option value="option1">Shelter</option>
-            <option value="option2">Orphnage</option>
-            <option value="option3">NGO's</option>
-          </Select>
-
-          <button className="bg-primary  text-white px-2 py-3 rounded-md">
-=======
           <Select
             onChange={(e) => {
-              console.log(e.target.value)
-              setType(e.target.value)
+              console.log(e.target.value);
+              setType(e.target.value);
             }}
             value={type}
             name="type"
@@ -212,7 +191,6 @@ export default function JoinOrganization() {
             onClick={handleSubmit}
             className="bg-primary text-white px-2 py-3 rounded-md"
           >
->>>>>>> e1ad15ceaadf572dd9934e5b359bea7c1e9ed2ba
             Join
           </button>
         </form>

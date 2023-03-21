@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import RestaurantProduct from "./RestaurantProduct";
+import RestaurantProduct from "../../Components/restaurant_product/RestaurantProduct";
 import {
   Box,
   Image,
@@ -13,15 +13,6 @@ import {
 } from "@chakra-ui/react";
 import { GrLocation } from "react-icons/gr";
 import { AiOutlineLeft } from "react-icons/ai";
-<<<<<<< HEAD
-const mouseOver = (e) => {
-  e.target.style.background = "gray";
-};
-const mouseOut = (e) => {
-  e.target.style.background = "";
-};
-const RestaurantHome = () => {
-=======
 import api from "../../api/axios";
 import Hotel from "../Home/Hotel";
 
@@ -47,7 +38,6 @@ const RestaurantHome = (props) => {
     fetchData();
   }, []);
 
->>>>>>> e1ad15ceaadf572dd9934e5b359bea7c1e9ed2ba
   return (
     <>
       {/* <Hotel
@@ -84,7 +74,6 @@ const RestaurantHome = (props) => {
           <Image
             src={restaurant?.attributes.images[0].Image}
             alt="Green double couch with wooden legs"
-           
           />
           <p className="text-md">{restaurant?.attributes.description}</p>
           <HStack>
@@ -126,8 +115,8 @@ const RestaurantHome = (props) => {
         </button>
       </Center>
     </>
-  )
-}
+  );
+};
 
 export default RestaurantHome;
 

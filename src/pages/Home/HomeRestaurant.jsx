@@ -1,8 +1,8 @@
-import React from "react"
-import { HStack, Spacer, Text } from "@chakra-ui/layout"
-import { Menu, MenuButton, Box, Image, MenuItem } from "@chakra-ui/react"
-import NavFooter from "../../Components/NavFooter"
-import Header from "../../Components/Header"
+import { React, useState, useEffect } from "react";
+import { HStack, Spacer, Text } from "@chakra-ui/layout";
+import { Menu, MenuButton, Box, Image, MenuItem } from "@chakra-ui/react";
+import NavFooter from "../../Components/NavFooter";
+import Header from "../../Components/Header";
 
 const homeRestaurant = () => {
   const [rests, setRests] = useState([]);
@@ -47,7 +47,7 @@ const homeRestaurant = () => {
 
       <NavFooter />
     </div>
-  )
-}
+  );
+};
 
-export default homeRestaurant
+export default homeRestaurant;
