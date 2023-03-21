@@ -15,12 +15,27 @@ import OrganizationLayout from "../layout/OrganizationLayout";
 import Protected from "./Protected";
 import OrgnizationDonations from "../pages/organization/donations/OrgnizationDonations";
 
+import Login from "../pages/auth/login/Login";
+import Register from "../pages/auth/register/Register";
+import HomeRestaurant from "../pages/Home/HomeRestaurant";
+import RestaurantLayout from "../layout/RestaurantLayout";
+import Donations from "../pages/restaurant/donations/Donations";
+import Items from "../pages/restaurant/items/Items";
+import SingleItem from "../pages/restaurant/item[id]/SingleItem";
+import Order from "../pages/restaurant/orders/Order";
+import OrganizationLayout from "../layout/OrganizationLayout";
+import Protected from "./Protected";
+import OrgnizationDonations from "../pages/organization/donations/OrgnizationDonations";
+
 import DonateNow from "../pages/Donate/DonateNow";
 import RestaurantOwner from "./RestaurantOwner";
 import OrganizationOwner from "./OrganizationOwner";
-import UserProfile from "../pages/auth/Profile/UserProfile";
-import OrderHistory from "../pages/history/OrderHistory";
-import DonationHistory from "../pages/history/DonationHistory";
+import RestaurantHome from "../pages/view_restaurants/RestaurantHome";
+import Restaurants from "../pages/view_restaurants/Restaurants";
+import RestaurantsPage from "../pages/view_restaurants/RestaurantsPage";
+import ProductSummary from "../pages/cart/ProductSummary";
+import JoinOrganization from "../pages/joinOrganization/JoinOrg";
+import JoinRestaurant from "../pages/joinRestaurant/JoinRes";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(

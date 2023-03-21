@@ -1,4 +1,5 @@
-import { React, useState, useEffect } from "react"
+import { React, useState, useEffect } from "react";
+import RestaurantProduct from "../../Components/restaurant_product/RestaurantProduct";
 import {
   Box,
   Image,
@@ -110,11 +111,13 @@ const RestaurantHome = (props) => {
         </Stack>
       </Box>
       <Center my="2">
-        <Button>continue purchase</Button>
+        <button onMouseOver={mouseOver} onMouseOut={mouseOut}>
+          continue purchase
+        </button>
       </Center>
     </>
-  )
-}
+  );
+};
 
 export default RestaurantHome
 

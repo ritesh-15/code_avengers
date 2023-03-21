@@ -3,7 +3,6 @@ import { VStack, HStack, Center, Text,Flex,Box,Spacer } from "@chakra-ui/react";
 import { FaHome, FaSearch } from "react-icons/fa";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import { TfiMenuAlt } from "react-icons/tfi";
-import { bottom } from "@popperjs/core";
 const NavFooter = () => {
   return (
     <Flex bottom={0} >

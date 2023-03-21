@@ -50,7 +50,7 @@ const homeRestaurant = () => {
 
       <NavFooter />
     </div>
-  )
-}
+  );
+};
 
-export default homeRestaurant
+export default homeRestaurant;

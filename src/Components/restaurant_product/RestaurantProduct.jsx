@@ -11,18 +11,19 @@ import {
   Badge,
   Spacer,
 } from "@chakra-ui/react";
-          import { BiCartAdd } from "react-icons/bi";
-
-
+import { BiCartAdd } from "react-icons/bi";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../app/slices/cartSlice";
 const RestaurantProduct = ({
   title,
   description,
-  qunatity,
+  quantity,
   price,
   image,
   discount,
   type,
 }) => {
+  const dispatch = useDispatch();
   return (
     <Card
       direction={{ base: "column", sm: "row" }}
@@ -43,7 +44,22 @@ const RestaurantProduct = ({
           <p className="text-md mt-2 inline-block">{description}</p>
         </Box>
         <HStack padding={2}>
-          <BiCartAdd size={25} />
+          <BiCartAdd
+            size={25}
+            onClick={() => {
+              dispatch(
+                addToCart({
+                  id,
+                  title,
+                  description,
+                  quantity,
+                  price,
+                  discount,
+                  image,
+                })
+              );
+            }}
+          />
           <Spacer />
           <Badge
             colorScheme="green"
