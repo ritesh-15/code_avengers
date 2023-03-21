@@ -37,8 +37,8 @@ export default function Login() {
       dispatch(setUser(payload.data.user));
 
       toast({
-        title: "Account created.",
-        description: "We've created your account for you.",
+        title: "Logged in successfully!",
+        description: "Successfully logged in",
         status: "success",
         duration: 4000,
         isClosable: true,
