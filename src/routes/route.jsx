@@ -19,6 +19,8 @@ import DonateNow from "../pages/Donate/DonateNow";
 import RestaurantOwner from "./RestaurantOwner";
 import OrganizationOwner from "./OrganizationOwner";
 import UserProfile from "../pages/auth/Profile/UserProfile";
+import OrderHistory from "../pages/history/OrderHistory";
+import DonationHistory from "../pages/history/DonationHistory";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -51,6 +53,26 @@ export const router = createBrowserRouter(
           <>
             <Protected>
               <UserProfile />
+            </Protected>
+          </>
+        }
+      />
+      <Route
+        path="/payment_history/:id"
+        element={
+          <>
+            <Protected>
+              <OrderHistory />
+            </Protected>
+          </>
+        }
+      />
+      <Route
+        path="/donation_history/:id"
+        element={
+          <>
+            <Protected>
+              <DonationHistory />
             </Protected>
           </>
         }

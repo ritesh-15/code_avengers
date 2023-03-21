@@ -49,7 +49,7 @@ export default function Login() {
       if (isOrganization) return navigate("/orgniztion");
       if (isRestaurant) return navigate("/restaurant");
 
-      navigate("/");
+      navigate("/userProfile");
     },
     onError: (e) => {
       toast({

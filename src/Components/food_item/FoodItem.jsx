@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 export default function FoodItem() {
   return (
@@ -21,5 +21,5 @@ export default function FoodItem() {
         </div>
       </div>
     </Link>
-  )
+  );
 }
