@@ -166,6 +166,10 @@ export default function JoinRestaurant() {
             <input
               onChange={handleImageSet}
               type="file"
+              name="file"
+              id="file"
+              onChange={ImageChange}
+              required
               className="bg-gray-100 outline-none mt-2 w-full px-2 py-3 rounded-md"
             />
           </div>
@@ -180,5 +184,5 @@ export default function JoinRestaurant() {
         </form>
       </div>
     </section>
-  )
+  );
 }

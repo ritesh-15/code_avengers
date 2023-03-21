@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import {
   Box,
   Image,
@@ -11,9 +11,9 @@ import {
   Center,
   HStack,
   Circle,
-} from "@chakra-ui/react"
+} from "@chakra-ui/react";
 
-import { AiOutlineLeft } from "react-icons/ai"
+import { AiOutlineLeft } from "react-icons/ai";
 
 const DonateNow = () => {
   return (
@@ -65,7 +65,7 @@ const DonateNow = () => {
         </div>
       </div>
     </Box>
-  )
-}
+  );
+};
 
-export default DonateNow
+export default DonateNow;

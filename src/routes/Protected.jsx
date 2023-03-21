@@ -1,9 +1,9 @@
-import React from "react"
-import { useSelector } from "react-redux"
-import { Navigate } from "react-router"
+import React from "react";
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router";
 
 export default function Protected({ isAuthRoute, children }) {
-  const user = useSelector((state) => state.user.user)
+  const user = useSelector((state) => state.user.user);
 
   return isAuthRoute ? (
     !user ? (
@@ -15,5 +15,5 @@ export default function Protected({ isAuthRoute, children }) {
     children
   ) : (
     <Navigate to="/login" />
-  )
+  );
 }

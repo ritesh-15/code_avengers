@@ -1,0 +1,13 @@
+.sweet-loading {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  margin: auto;
+  padding: auto;
+}
+.cliploader {
+  margin-top: 50%;
+  padding: auto;
+}
